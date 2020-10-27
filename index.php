@@ -134,6 +134,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav mx-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Home</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">About us</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Connexion</a></li>
                 </ul>
