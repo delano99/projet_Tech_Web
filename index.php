@@ -3,7 +3,7 @@
 	if (isset($_GET['controller']) && isset($_GET['action']))
 	{
 		$controller = $_GET['controller'];
-		$action     = $_GET['action'];
+        $action     = $_GET['action'];
 	}
 	else
 	{
@@ -141,25 +141,24 @@
         </div>
     </nav>
     <div id="content">
-                <div class="container">
-                    <div class="container">
-                        <?php
-							foreach ($tab as $elt)
-							{
-								?>
-									<div id="navigation_tree" class="">
-										<span class="">
-											<a href="?controller=<?=$elt['controller'];?>&action=<?=$elt['action'];?>"><?php/*<?= $action;?>*/?> </a>
-											>
-										</span>
-									</div>
-								<?php
-							}
+        <div class="container">
+            <div class="container">
+                <?php
+					foreach ($tab as $elt)
+					{
+					    ?>
+							<div id="navigation_tree" class="">
+								<span class="">
+									<a href="?controller=<?=$elt['controller'];?>&action=<?=$elt['action'];?>"><?php/*<?= $action;?>*/?> </a>
+								</span>
+							</div>
+						<?php
+					    }
                         ?>
-                    </div>
                 </div>
-                <?php require_once ($route);?>
             </div>
+            <?php require_once ($route);?>
+    </div>
     <footer class="footer text-faded text-center py-5">
         <div class="container">
             <p class="m-0 small">Copyright&nbsp;©&nbsp;Brand 2020</p>
