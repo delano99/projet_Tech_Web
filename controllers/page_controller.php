@@ -8,6 +8,11 @@ class PageController
 	{
 	   set_route('views/page_press.php');
 	}
+
+	public function about()
+	{
+		set_route('views/about.php');
+	}
     
 }
 ?>	

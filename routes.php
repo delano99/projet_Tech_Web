@@ -19,7 +19,7 @@
   // we're adding an entry for the new controller and its actions
   $controllers = array(
                        'users' => ['login','inscription','connexion','deconnexion','resetPassword','forgotPassword','update_account','modify_account','profil','create_account','redirection'],
-                       'page'=>['home'] 
+                       'page'=>['home','about'] 
                        );
   if (array_key_exists($controller, $controllers))
   {

@@ -12,52 +12,29 @@
 	}
 	/*session_start();
 	if(!isset($_SESSION['connecté']))
-	$_SESSION['connecté'] = 'non connecté';
+	$_SESSION['connecté'] = 'non connecté';*/
 
 	//-------------------------------------------------------------------------------------------------------------------
 	$nav = '';
-	if(isset($_SESSION['statut']) && ($_SESSION['statut']== 'TUTEUR')) // id_statut d'un  tuteur
+	if ($_GET['controller'] != 'page' && $_GET['action'] != 'home') // test si utilisateur connecter
 	{
 		$nav = '
-		<li class="nav-item"><a href="?controller=tuteurs&action=interface_tuteur" class="nav-link">Mon tutorat </a>
+		<li class="nav-item"><a class="nav-link" href="?controller=page&action=home">Mon profil </a>
 		</li>
-		<li class="nav-item"><a href="?controller=tuteurs&action=selection_tutores" class="nav-link">Mes Tutorés </a>
-		</li>
-		<li class="nav-item"><a href="?controller=tuteurs&action=savoir_tuteurs" class="nav-link">Le tutorat: ce que je dois savoir </a>
+		<li class="nav-item"><a class="nav-link" href="?controller=page&action=home">Deconnexion </a>
 		</li>
 		';
 	}
-	elseif(isset($_SESSION['statut']) && preg_match('#^TUTORE#', $_SESSION['statut']) == 1)
-	{
-		$nav = '
-		<li class="nav-item"><a href="?controller=tutores&action=interface_tutore" class="nav-link">Mon tutorat </a>
-		</li>
-		<li class="nav-item"><a href="?controller=tutores&action=selection_tuteurs" class="nav-link">Mon Tuteur </a>
-		</li>
-		<li class="nav-item"><a href="?controller=tutores&action=savoir_tutores" class="nav-link">Le tutorat: ce que je dois savoir </a>
-		';
-	}
-	elseif(isset($_SESSION['statut']) && ($_SESSION['statut'] == 'SUPER_ADMIN'))
-	{
-		$nav = '';
-	}
-	elseif(isset($_SESSION['statut']))
-	{
-		$nav = '';
-	}
+	
 	else
 	{
-		$nav = '
-		<li class="nav-item"><a href="index.php" class="nav-link">Accueil </a>
-		</li>
-		<li class="nav-item"><a href="#" class="nav-link">Actualités </a>
-		</li>
-		<li class="nav-item"><a href="?controller=page&action=contact" class="nav-link">Contact </a>
-		</li>
-		';
+        $nav = '
+        <li class="nav-item" role="presentation"><a class="nav-link" href="?controller=page&action=home">Connexion</a></li>
+        ';
+        //route vers la connexion et l'inscription
 	}
 	//fin de control sur la navbar horizontale
-	//----------------------------------------------MENU
+	/*//----------------------------------------------MENU
 	$menu ='';
 	if($_SESSION['connecté'] == 'non connecté')
 	{
@@ -133,10 +110,9 @@
         <div class="container"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#">Brand</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">About us</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Connexion</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="?controller=page&action=home">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="?controller=page&action=about">About us</a></li>
+                    <?php echo ($nav);?>
                 </ul>
             </div>
         </div>
