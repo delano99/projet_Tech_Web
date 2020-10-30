@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 12 oct. 2020 à 21:38
+-- Généré le : ven. 30 oct. 2020 à 17:53
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -121,10 +121,21 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
-  `e_mail` varchar(255) NOT NULL,
-  `passWord` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id_user`, `nom`, `prenom`, `email`, `password`) VALUES
+(1, 'aa', 'aa', 'a@gmail.com', 'e0c9035898dd52fc65c41454cec9c4d2611bfb37'),
+(2, 'aa', 'aa', 'a@gmail.com', 'e0c9035898dd52fc65c41454cec9c4d2611bfb37'),
+(3, 'KOYOUO NYOTUE', 'Veirel Delano', 'veirel_delano.koyouo_nyotue@isen.yncrea.fr', '$2y$10$hXzLSzSw7diMGnsxj2k2V.NF2ljvMYMy4qJ6CFooamEvt0Cz25qRW'),
+(4, 'KOYOUO NYOTUE', 'Veirel Delano', 'veirel@isen.yncrea.fr', '$2y$10$3URMNEld4Vaz6t05lYtHcOlXhbjPZv1qfXFvdCwJzdUnZiI7mAHca'),
+(5, 'v', 'e', 'c@isen.yncrea.fr', '$2y$10$PxhpJty9RnycZ5oEf3LEtOOFykgkGHujErzy0W4RiVTJcc4oMyCuK');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
