@@ -76,10 +76,11 @@ require_once('connexion.php');
     
     $request = $db->prepare('SELECT u.id_user as id,u.password as mdp  FROM users as u  WHERE u.email= ? ');
     $request->execute(array($email));
-    while( $elt= $request->fetch()){
+    while( $elt= $request->fetch()) 
+    {
       $id= $elt['id'];
       $password= $elt['mdp'];
- }
+    }
     if ($request->rowCount() == 1 && password_verify($pwd,$password))
     {
          
@@ -104,4 +105,10 @@ require_once('connexion.php');
     return ($request->rowCount()) ;
  }
 
- 
+    public function Deconnexion()
+    {
+      session_destroy();
+      header('Location: ?controller=users&action=login');
+    }
+
+}

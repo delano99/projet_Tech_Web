@@ -30,7 +30,7 @@
         $nav = '
 		<li class="nav-item"><a class="nav-link" href="?controller=page&action=home">Mon profil </a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="?controller=page&action=home">Deconnexion </a>
+		<li class="nav-item"><a class="nav-link" href="?controller=users&action=deconnexion">Deconnexion </a>
 		</li>
         ';
     }

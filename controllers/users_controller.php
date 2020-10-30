@@ -33,13 +33,10 @@ public function connexion()
 	    		set_route('views/Login.php');
 	    }
 }
-
-
-
-
-
-
-
+public function inscription()
+	{
+			set_route('views/inscription.php');
+	}
 
 public static function deconnexion()
 {
