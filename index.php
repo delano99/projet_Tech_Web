@@ -10,50 +10,30 @@
 		$controller = 'page';
 		$action     = 'home';
 	}
-	/*session_start();
+	session_start();
 	if(!isset($_SESSION['connecté']))
-	$_SESSION['connecté'] = 'non connecté';*/
+	$_SESSION['connecté'] = 'non connecté';
 
 	//-------------------------------------------------------------------------------------------------------------------
 	$nav = '';
-	/*if ($_GET['controller'] != 'page' && $_GET['action'] != 'home') // test si utilisateur connecter
+	if($_SESSION['connecté'] == 'non connecté') // test si utilisateur connecter
 	{
-		$nav = '
+        $nav = '
+        <li class="nav-item"><a class="nav-link" href="?controller=users&action=login">Connexion </a>
+		</li>
+        <li class="nav-item"><a class="nav-link" href="?controller=users&action=inscription">Inscription</a></li>
+		';
+	}
+	
+	else
+	{
+        $nav = '
 		<li class="nav-item"><a class="nav-link" href="?controller=page&action=home">Mon profil </a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="?controller=page&action=home">Deconnexion </a>
 		</li>
-		';
-	}
-	
-	else
-	{*/
-        $nav = '
-        <li class="nav-item"><a class="nav-link" href="?controller=page&action=home">Connexion </a>
-		</li>
-        <li class="nav-item"><a class="nav-link" href="?controller=users&action=inscription">Inscription</a></li>
         ';
-        //route vers la connexion et l'inscription
-	//}
-	//fin de control sur la navbar horizontale
-	/*//----------------------------------------------MENU
-	$menu ='';
-	if($_SESSION['connecté'] == 'non connecté')
-	{
-		$menu ='
-		<a class="dropdown-item forgot" href="?controller=users&action=login" role="presentation">Connexion</a>
-		';
-	}
-	else
-	{
-		$menu ='
-		<a class="dropdown-item forgot" href="?controller=users&action=profil" role="presentation">Profil</a>
-		<a class="dropdown-item forgot" href="?controller=users&action=deconnexion"" role="presentation">Déconnexion</a>
-		';
-	}
-	//fin de control menu*/
-	
-	// fin control lateralSideBar
+    }
 	$tab = require_once('arbre_navigation.php');
 	$route = '';
 	$donnees;

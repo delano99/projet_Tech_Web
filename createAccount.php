@@ -65,7 +65,7 @@
 			//pwd et confirmation différente
 			//login déjà utilisé pour un compte valide
 			$_SESSION['alert']= "&nbsp &nbsp &nbsp &nbsp<strong>  Mots de passe différents</strong>";
-			header('location:index.php?controller=users&action=choixStatut');
+			header('location:index.php?controller=users&action=inscription');
 		     }
 	}
 	else{

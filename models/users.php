@@ -1,21 +1,13 @@
 <?php
 require_once('connexion.php');
+
   class Users
   {
     private $id_user;
     private $nom;
     private $prenom;
     private $email;
-    private $chemin_photo;
-    private $date_naissance;
     private $password;
-    private $phone;
-    private $ville;
-    private $adress;
-    private $com_adress;
-    private $code_postal;
-    private $niveau;
-    private $ecole;
 
     public function __construct(){}
 
@@ -42,43 +34,11 @@ require_once('connexion.php');
     {
     return $this->chemin_photo;
     }
-    public function getDate_naissance()
-    {
-    return $this->date_naissance;
-    }
-
     public function getPassword()
     {
     return $this->password;
     }       
-    public function getPhone()
-    {
-    return $this->phone;
-    }
-    public function getVille()
-    {
-    return $this->ville;
-    }
-    public function getAdress()
-    {
-    return $this->adress;
-    }
-    public function getCom_adress()
-    {
-    return $this->com_adress;
-    }
-    public function getCode_postal()
-    {
-    return $this->code_postal;
-    }
-    public function getNiveau()
-    {
-    return $this->niveau;
-    }
-    public function getEcole()
-    {
-    return $this->ecole;
-    }
+    
     // les set              
 
     public function setId_user($user_id)
@@ -100,51 +60,10 @@ require_once('connexion.php');
     {
       $this->email=$mail;
     }
-
-    public function setChemin_photo($photo)
-    {
-      $this->chemin_photo=$photo;
-    }
-
-    public function setDate_naissance($date_naiss)
-    {
-      $this->date_naissance=$date_naiss;
-    }         
-
    public function setPassword($pwd)
     {
       $this->password=$pwd;
     }
-    public function setPhone($phone)
-    {
-     $this->phone= $phone ;
-    }
-    public function setVille($ville)
-    {
-     $this->ville= $ville ;
-    }
-    public function setAdress($adress)
-    {
-     $this->adress= $adress ;
-    }
-    public function setCom_adress($com_adress)
-    {
-     $this->com_adress= $com_adress ;
-    }
-    public function setCode_postal($code_postal)
-    {
-     $this->code_postal= $code_postal ;
-    }
-    public function setNiveau($niveau)
-    {
-     $this->niveau= $niveau ;
-    }
-    public function setEcole($ecole)
-    {
-     $this->ecole= $ecole ;
-    }
-
-
 
     public function Modify_info($id_user) // modification de compte
     {
@@ -248,10 +167,11 @@ require_once('connexion.php');
  public function Connexion($email,$pwd)
  {  
       
-    $db = Db::getInstance();
+    $Db = new config();
+    $db = $Db::getInstance();
 
     
-    $request = $db->prepare('SELECT u.id_user as id,u.password as mdp  FROM user as u, avoir_statut as av, statut_compte as s  WHERE u.email= ? and u.id_user = av.id_user and av.id_statut_compte = s.id_statut_compte and s.libelle <> "ATTENTE_VALIDATION" ');
+    $request = $db->prepare('SELECT u.id_user as id,u.password as mdp  FROM users as u  WHERE u.email= ? ');
     $request->execute(array($email));
     while( $elt= $request->fetch()){
       $id= $elt['id'];
@@ -263,7 +183,7 @@ require_once('connexion.php');
          $_SESSION['id_user']= $id;
          
          //on recupere l'ID du statut de l'user
-         $request=$db->query('SELECT avst.id_statut as id_statut,e.libelle as libelle,s.libelle as libelle_statut, us.nom as nom,us.prenom as prenom,us.email as mail from user as us, avoir_statut as avst, etat as e,statut as s WHERE  avst.id_user=us.id_user AND e.id_etat = avst.id_etat AND avst.id_statut = s.id_statut AND avst.id_user = '.$_SESSION['id_user'].'');
+         $request=$db->query('SELECT us.nom as nom,us.prenom as prenom,us.email as mail from users as us WHERE  id_user = '.$_SESSION['id_user'].'');
          $res = $request->fetch();
          
          
@@ -271,9 +191,6 @@ require_once('connexion.php');
          $_SESSION['email']=$res['mail'];
          $_SESSION['nom']=$res['nom'];
          $_SESSION['prenom']=$res['prenom'];
-         $_SESSION['id_statut']=$res['id_statut'];
-         $_SESSION['etat']= $res['libelle'];
-         $_SESSION['statut']= $res['libelle_statut'];
          //exit('authentification success');
     } 
     else

@@ -13,6 +13,6 @@ class PageController
 	{
 		set_route('views/about.php');
 	}
-    
+
 }
 ?>	
