@@ -48,12 +48,7 @@ public function forgotPassword()
 
 public function inscription()
 	{
-		if (isset($_POST['Tuteur'])) {
-			set_route('views/inscriptionTuteur.php');
-		}
-		if (isset($_POST['Tutore'])) {
-			set_route('views/inscriptionTutore.php');
-		}
+			set_route('views/inscription.php');
 	}
 
 public function profil()

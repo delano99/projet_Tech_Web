@@ -16,7 +16,7 @@
 
 	//-------------------------------------------------------------------------------------------------------------------
 	$nav = '';
-	if ($_GET['controller'] != 'page' && $_GET['action'] != 'home') // test si utilisateur connecter
+	/*if ($_GET['controller'] != 'page' && $_GET['action'] != 'home') // test si utilisateur connecter
 	{
 		$nav = '
 		<li class="nav-item"><a class="nav-link" href="?controller=page&action=home">Mon profil </a>
@@ -27,12 +27,14 @@
 	}
 	
 	else
-	{
+	{*/
         $nav = '
-        <li class="nav-item" role="presentation"><a class="nav-link" href="?controller=page&action=home">Connexion</a></li>
+        <li class="nav-item"><a class="nav-link" href="?controller=page&action=home">Connexion </a>
+		</li>
+        <li class="nav-item"><a class="nav-link" href="?controller=users&action=inscription">Inscription</a></li>
         ';
         //route vers la connexion et l'inscription
-	}
+	//}
 	//fin de control sur la navbar horizontale
 	/*//----------------------------------------------MENU
 	$menu ='';
