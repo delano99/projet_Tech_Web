@@ -1,4 +1,5 @@
 <?php 
+$SESSION
             if(isset($_SESSION['alert']))
             {
                 ?>
