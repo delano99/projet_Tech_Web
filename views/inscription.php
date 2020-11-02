@@ -1,43 +1,48 @@
 
-        <div class="row register-form">
-            <div class="col-md-8 offset-md-2">
-                <form method="post" action="createAccount.php" class="envoi">
-                    <div class="form-row form-group" id="Yes" name="text1" >
-                        <h1>Register Form</h1>
-                
-                            <input class="form-control complete " type="text" name="nom" id="a" placeholder="Nom" >
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control complete" type="text" name="prenom" id="b" placeholder="Prénom" >
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control complete" type="email" name="email" id="numero1" placeholder="Email" >
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control complete" type="password" name="password" id="password" placeholder="Mot de passe">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control complete" type="password" name="confirmer_password" id="cpassword" placeholder="Confirmer mot de passe" >
-                        <span id='mess'></span>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn-login btn-primary btn-block" id="submit"type="submit">sign up</button>
-                        </div>
-      </div>
-    </form>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript">
+
+    <div class="row register-form">
+        <div class="col-md-8 offset-md-2">
+            <form class="custom-form" method="post" action="createAccount.php">
+                <h1>Register Form</h1>
+                <div class="form-row form-group" id="Yes" name="text1">
+                    <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Nom </label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control complete" type="text" name="nom" id="a" ></div>
+                </div>
+                <div class="form-row form-group" id="Yes" name="text1">
+                    <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Prenom </label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control complete" type="text" name="prenom" id="b" ></div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-sm-4 label-column"><label class="col-form-label" for="email-input-field">Email </label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control complete" type="email" name="email" id="numero1" ></div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field">Password </label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control complete" type="password" name="password" id="password"></div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-sm-4 label-column"><label class="col-form-label" for="repeat-pawssword-input-field">Repeat Password </label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control complete" type="password" name="confirmer_password" id="cpassword"></div>
+                    <span id='mess'></span>
+                </div>
+                <div class ="form group">
+                <button class="btn btn-light submit-button" id="submit"type="submit">sign up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/current-day.js"></script>
+    <script type="text/javascript">
     //Control password
     $(document).ready(function(){
-
         
         var complete= document.querySelectorAll(".complete");
         var pwd= document.getElementById('password');
         var cpwd= document.getElementById('cpassword');
         var bool= true;
       
-
         var checke = function() {
           if (pwd.value ==  cpwd.value) {
             document.getElementById('mess').style.color = 'green';
@@ -47,7 +52,6 @@
             document.getElementById('mess').innerHTML = 'not matching';
           }
         }
-
         function checkEmail() {
                     var email = document.getElementById('numero1');
                     var  re =/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))+@[A-Z0-9.-]+\.yncrea.fr/igm;
@@ -97,3 +101,4 @@
         })
 })
 </script>
+
