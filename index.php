@@ -1,5 +1,6 @@
 <?php
-	require_once('connexion.php');
+    require_once('connexion.php');
+    require_once('arbre_navigation.php');
 	if (isset($_GET['controller']) && isset($_GET['action']))
 	{
 		$controller = $_GET['controller'];
@@ -34,7 +35,8 @@
 		</li>
         ';
     }
-	$tab = require_once('arbre_navigation.php');
+    $navigation = new arbre();
+    $tab = $navigation::nave($controller, $action);
 	$route = '';
 	$donnees;
 	function set_route($road){
@@ -73,6 +75,8 @@
     require './views/header.php';
     ?>
                 <?php
+                if (is_array($tab) || is_object($tab))
+                {
 					foreach ($tab as $elt)
 					{
 					    ?>
@@ -81,7 +85,8 @@
 									<a href="?controller=<?=$elt['controller'];?>&action=<?=$elt['action'];?>"><?php/*<?= $action;?>*/?> </a>
 								</span>
 							</div>
-						<?php
+                        <?php
+                        }
 					    }
                         ?>
                 </div>
