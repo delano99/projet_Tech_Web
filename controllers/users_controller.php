@@ -36,7 +36,13 @@ public function connexion()
 public function inscription()
 	{
 			set_route('views/inscription.php');
+  }
+  
+  public function redirection()
+  {
+    set_route('views/type_question.php');
 	}
+	
 
 public static function deconnexion()
 {

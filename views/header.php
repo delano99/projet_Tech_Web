@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="assets/css/responsive-registration-form-1.css">
     <link rel="stylesheet" href="assets/css/responsive-registration-form.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    
 </head>
 
 <body style="background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('assets/img/al&&ed.jpg');">

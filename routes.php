@@ -9,6 +9,9 @@
       case 'users':
         $controller = new UsersController();
         break;
+      case 'partie':
+        $controller = new PartiesController();
+        break;
       /*case 'admin':
         $controller = new TuteursController();
         // break;*/
@@ -19,7 +22,8 @@
   // we're adding an entry for the new controller and its actions
   $controllers = array(
                        'users' => ['login','inscription','connexion','deconnexion','resetPassword','forgotPassword','update_account','modify_account','profil','create_account','redirection'],
-                       'page'=>['home','about'] 
+                       'page'=>['home','about'],
+                       'partie' => ['begin_game'] 
                        );
   if (array_key_exists($controller, $controllers))
   {
