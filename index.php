@@ -53,10 +53,10 @@
 			global $donnees2;
 			$donnees2=$data;                                                                                                                                                                                 
 			}
-			function set_donnees3($data){
-				global $donnees3;
-				$donnees3=$data;                                                                                                                                                                                 
-				}
+	function set_donnees3($data){
+		global $donnees3;
+		$donnees3=$data;                                                                                                                                                                              
+	}
 	function set_donnees($data){
 		global $donnees;
 		$donnees=$data;                                                                                                                                                                                 
