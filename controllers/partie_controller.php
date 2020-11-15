@@ -70,7 +70,11 @@ public  function begin_game()
 
 		else{
 
-
+			set_donnees1(Parties::recupPartie($_SESSION['id_user'],1));
+			set_donnees2(Parties::recupPartie($_SESSION['id_user'],2));
+			set_donnees3(Parties::recupPartie($_SESSION['id_user'],3));
+			set_data(Users::recupUser($_SESSION['id_user']));
+	
 			set_route('views/mon_profil.php');
 		}
 		

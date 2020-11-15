@@ -22,8 +22,12 @@
 													</p>
 												</div>
 												</div>
-												
+																									
 												<div class="card-header py-4">
+												<?php 
+													if(isset($message) && isset($res))
+													{
+													?>
                                                 <p class="text-primary m-0 font-weight-bold">Dernier match </p>
 												
                                             </div>
@@ -33,7 +37,13 @@
 													<span style="color: black; font-style: oblique;">	Difficulter: &nbsp;&nbsp; <?=$message;?></span> </br>
 													<span style="color: black; font-style: oblique;">	Score:  &nbsp;&nbsp; <?=$res;?></span> </br>
 													</p>
-												</div>
+													</div>
+													<?php
+												}
+												?>
+												
+
+												
         
     </div>
     <section class="pricing-table">
