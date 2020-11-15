@@ -1,6 +1,4 @@
-
-
-      <div>
+<div>
        <!--   <h1 class="text-center text-white font-weight-bold text-uppercase bg-dark" >  Complete Quiz Website using PHP and MYSQL using Session</h1><br>
       <div class="container "><br> -->
          <h1 class="text-center text-white font-weight-bold text-uppercase bg-dark" >  Complete Quiz Website using PHP and MYSQL using Session </h1><br>
@@ -18,7 +16,7 @@
                   <p class="card-header text-center" > <?php echo $_SESSION['nom']; ?>, you have to select only one out of 4. Best of Luck <i class="fas fa-thumbs-up"></i>	 </p>
                </div>
                <br>
-               <form action="checked.php" method="post">
+               <form action="?controller=partie&action=verif_game" method="post">
                   <?php
                      foreach ($donnees as $elt) 
                       {
@@ -26,7 +24,7 @@
                   <br>
                   <div class="card">
                      <br>
-                     <p class="card-header" >  <?=$elt->getLibelle();?> <input type="hidden" name="id_q" value="<?=$elt->getId_question()?>" ></p>
+                     <p class="card-header" >  <?=$elt->getLibelle();?> <input type="hidden" name="id_q" value="<?=$elt->getTypeQuestion()?>" ></p>
                     
                      <?php
                        foreach ($data as $dat) 
@@ -36,7 +34,7 @@
                          ?>	
                            
                      <div class="card-block">
-                        <input type="radio" name="quizcheck[<?=$dat->getLibelle()?>]" id="<? echo $dat->getId_reponse(); ?>" value="<?php echo $dat->getValeur(); ?>" > <?=$dat->getLibelle()?> 
+                        <input type="radio" name="quizcheck[<?=$dat->getId_question()?>]" id="<? echo $dat->getId_reponse(); ?>" value="<?php echo $dat->getValeur(); ?>" > <?=$dat->getLibelle()?> 
                         <input type="hidden" name="id_r" value="<?=$dat->getId_reponse()?>" >
                         <br>
                      </div>
@@ -55,11 +53,7 @@
                </form>
                <p id="letc"></p>
             </div>
-            <br>
-            <a href="logout.php" class="btn btn-primary d-block m-auto text-white" > Logout </a> <br>
-         </div>
          <br>
       </div>
         </ul>
       </div>
-

@@ -23,7 +23,7 @@
   $controllers = array(
                        'users' => ['login','inscription','connexion','deconnexion','resetPassword','forgotPassword','update_account','modify_account','profil','create_account','redirection'],
                        'page'=>['home','about'],
-                       'partie' => ['begin_game'] 
+                       'partie' => ['begin_game','verif_game'] 
                        );
   if (array_key_exists($controller, $controllers))
   {

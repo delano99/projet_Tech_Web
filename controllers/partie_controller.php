@@ -24,9 +24,34 @@ public  function begin_game()
 		}
 			else
 					set_route('views/login.php');
-	}
+  }
+  
+  public  function verif_game()
+  {
+		$counter =0;
+		$donnees = Questions::recupQuestion($_POST['id_q']);
+		$selected = $_POST['quizcheck'];
+		var_dump($selected);
 
+		foreach($donnees as $elt)
+		{
+			if($selected[$elt->getId_question()] == 1)
+			{
+				$counter++;
+			}
+		}
+
+		var_dump($counter);
+						
+		
+
+  }
+            
+            
 }
+
+
+  
 
 ?>
 
