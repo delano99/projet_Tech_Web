@@ -68,25 +68,26 @@ require_once('connexion.php');
         
     }
 
-    public static function recupPartie($id_user)
+    public static function recupPartie($id_user,$id_typeQuestion)
     {
       $list=[];
+      $Tscore= 0;
+      $cout=0;
       $Db = new config();
       $db = $Db::getInstance();
       
-      $req=$db->prepare('SELECT id_partie, score,id_user, libelle FROM parties as p , type_question as tq WHERE id_user = ? and p.id_typeQuestion=tq.id_typeQuestion');
-      $req->execute(array($id_user));
+      $req=$db->prepare('SELECT score FROM parties as p , type_question as tq WHERE id_user = ? and p.id_typeQuestion=tq.id_typeQuestion and tq.id_typeQuestion = ?');
+      $req->execute(array($id_user,$id_typeQuestion));
 
       foreach ($req->fetchAll() as $data)
       {
         $partie= new Parties();
-        $partie->setId_partie($data['id_partie']);
         $partie->setScore($data['score']);
-        $partie->setId_users($data['id_user']);
-        
-
-        $list []= array('partie'=>$partie,'libelle'=>$data['libelle']);
+        $Tscore += $partie->getScore();
+        $cout++;
       }
+      
+      $list []= array('score'=>$Tscore,'nombre'=>$cout);
       //var_dump($list);
       return $list ;
     }

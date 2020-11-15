@@ -30,8 +30,8 @@
                                             <div class="row space">
 												<div class="col-md-7 profil-text">
 														<p>
-													<span style="color: black; font-style: oblique;">	Difficulter: &nbsp;&nbsp; <?=$res;?></span> </br>
-													<span style="color: black; font-style: oblique;">	Score:  &nbsp;&nbsp; <?=$message;?></span> </br>
+													<span style="color: black; font-style: oblique;">	Difficulter: &nbsp;&nbsp; <?=$message;?></span> </br>
+													<span style="color: black; font-style: oblique;">	Score:  &nbsp;&nbsp; <?=$res;?></span> </br>
 													</p>
 												</div>
         
@@ -39,33 +39,33 @@
     <section class="pricing-table">
         <div class="container">
             <div class="center">
-                <h2>Pricing Table</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut &lt;br&gt; et dolore magna aliqua. Ut enim ad minim veniam </p>
+                <h2>Historique participation</h2>
+                <p class="lead">####################################################################################################################################################################### </p>
             </div>
             <div class="pricing-area text-center">
                 <div class="row">
                     <div class="col-sm-4 plan price red wow fadeInDown">
                         <ul class="list-group">
                             <li class="list-group-item heading">
-                                <h1>Start Up</h1><span class="price">$6/Month </span></li>
-                            <li class="list-group-item"><span>1 Gb Dadicated Ram</span></li>
-                            <li class="list-group-item"><span>24/7 Support</span></li>
+                                <h1>Difficile</h1></li>
+																<li class="list-group-item"><span> partie jouer :&nbsp&nbsp&nbsp;<?=$donnees1[0]['nombre']?></span></li>
+                            <li class="list-group-item"><span>Score total :&nbsp&nbsp&nbsp;<?=$donnees1[0]['score']?></span></li>
                         </ul>
                     </div>
                     <div class="col-sm-4 plan price green wow fadeInDown">
                         <ul class="list-group">
                             <li class="list-group-item heading">
-                                <h1>Standard </h1><span class="price">$12/Month </span></li>
-                            <li class="list-group-item"><span>2 Gb Dadicated Ram</span></li>
-                            <li class="list-group-item"><span>20 Email Account</span></li>
+                                <h1>Moyenne </li>
+																<li class="list-group-item"><span> partie jouer :&nbsp&nbsp&nbsp;<?=$donnees2[0]['nombre']?></span></li>
+                            <li class="list-group-item"><span>Score total :&nbsp&nbsp&nbsp;<?=$donnees2[0]['score']?></span></li>
                         </ul>
                     </div>
                     <div class="col-sm-4 plan price yellow wow fadeInDown">
                         <ul class="list-group">
                             <li class="list-group-item heading">
-                                <h1>Premium </h1><span class="price">$24/Month </span></li>
-                            <li class="list-group-item"><span>50 Gb Disk Space</span></li>
-                            <li class="list-group-item"><span>8 Gb Dadicated Ram</span></li>
+                                <h1>Facile</li>
+																<li class="list-group-item"><span> partie jouer :&nbsp&nbsp&nbsp;<?=$donnees3[0]['nombre']?></span></li>
+                            <li class="list-group-item"><span>Score total :&nbsp&nbsp&nbsp;<?=$donnees3[0]['score']?></span></li>
                         </ul>
                     </div>
                 </div>

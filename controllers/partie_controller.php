@@ -29,39 +29,53 @@ public  function begin_game()
   
   public  function verif_game()
   {
-		$counter =0;
-		$donnees = Questions::recupQuestion($_POST['id_q']);
-		$selected = $_POST['quizcheck'];
-		//var_dump($selected);
-
-		foreach($donnees as $elt)
+		if(isset($_POST['id_q']))
 		{
-			if($selected[$elt->getId_question()] == 1)
+			$counter =0;
+			$donnees = Questions::recupQuestion($_POST['id_q']);
+			$selected = $_POST['quizcheck'];
+			//var_dump($selected);
+	
+			foreach($donnees as $elt)
 			{
-				$counter++;
+				if($selected[$elt->getId_question()] == 1)
+				{
+					$counter++;
+				}
 			}
+	
+			Parties::inputPart($counter, $_SESSION['id_user'], $_POST['id_q']);
+			set_donnees1(Parties::recupPartie($_SESSION['id_user'],1));
+			set_donnees2(Parties::recupPartie($_SESSION['id_user'],2));
+			set_donnees3(Parties::recupPartie($_SESSION['id_user'],3));
+			set_data(Users::recupUser($_SESSION['id_user']));
+	
+			set_res($counter);
+	
+			switch($_POST['id_q']) {
+				case 1:
+					$dif = "Difficile";  
+					break;
+				case 2:
+					$dif = "Moyen";
+					break;
+				case 3:
+					$dif = "Facile";
+					break;
+				}
+				set_message($dif);
+
+				set_route('views/mon_profil.php');
 		}
 
-		Parties::inputPart($counter, $_SESSION['id_user'], $_POST['id_q']);
-		set_donnees(Parties::recupPartie($_SESSION['id_user']));
-		set_data(Users::recupUser($_SESSION['id_user']));
+		else{
 
-		set_res($counter);
 
-		switch($_POST['id_q']) {
-      case 1:
-        $dif = "Difficile";  
-        break;
-      case 2:
-        $dif = "Moyen";
-        break;
-      case 3:
-        $dif = "Facile";
-        break;
-			}
-			set_message($dif);
+			set_route('views/mon_profil.php');
+		}
+		
 
-		set_route('views/mon_profil.php');
+		
 
   }
             

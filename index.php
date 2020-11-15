@@ -31,7 +31,7 @@
 	{
 				$nav = '
 				<li class="nav-item" role="presentation"><a class="nav-link" href="?controller=users&action=redirection">Jouer</a></li>
-		<li class="nav-item"><a class="nav-link" href="?controller=page&action=home">Mon profil </a>
+		<li class="nav-item"><a class="nav-link" href="?controller=partie&action=verif_game">Mon profil </a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="?controller=users&action=deconnexion">Deconnexion </a>
 		</li>
@@ -45,6 +45,18 @@
 		global $route;
 		$route = $road;
 	}
+	function set_donnees1($data){
+		global $donnees1;
+		$donnees1=$data;                                                                                                                                                                                 
+		}
+		function set_donnees2($data){
+			global $donnees2;
+			$donnees2=$data;                                                                                                                                                                                 
+			}
+			function set_donnees3($data){
+				global $donnees3;
+				$donnees3=$data;                                                                                                                                                                                 
+				}
 	function set_donnees($data){
 		global $donnees;
 		$donnees=$data;                                                                                                                                                                                 
