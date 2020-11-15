@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav mx-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="?controller=page&action=home">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="?controller=page&action=about">About us</a></li>
+                    
                     <?php echo ($nav);?>
                 </ul>
             </div>

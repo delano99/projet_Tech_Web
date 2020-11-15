@@ -19,7 +19,8 @@
 	$nav = '';
 	if($_SESSION['connecté'] == 'non connecté') // test si utilisateur connecter
 	{
-        $nav = '
+				$nav = '
+				<li class="nav-item" role="presentation"><a class="nav-link" href="?controller=page&action=about">About us</a></li>
         <li class="nav-item"><a class="nav-link" href="?controller=users&action=login">Connexion </a>
 		</li>
         <li class="nav-item"><a class="nav-link" href="?controller=users&action=inscription">Inscription</a></li>
@@ -28,7 +29,8 @@
 	
 	else
 	{
-        $nav = '
+				$nav = '
+				<li class="nav-item" role="presentation"><a class="nav-link" href="?controller=users&action=redirection">Jouer</a></li>
 		<li class="nav-item"><a class="nav-link" href="?controller=page&action=home">Mon profil </a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="?controller=users&action=deconnexion">Deconnexion </a>

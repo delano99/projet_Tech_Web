@@ -4,6 +4,7 @@
 require_once('models/users.php');
 require_once('models/questions.php');
 require_once('models/reponses.php');
+require_once('models/parties.php');
 /* Définition du controller */
 class PartiesController
 {
@@ -42,7 +43,8 @@ public  function begin_game()
 		}
 
 		var_dump($counter);
-						
+		
+		Parties::inputPart($counter, $_SESSION['id_user'], $_POST['id_q']);
 		
 
   }
