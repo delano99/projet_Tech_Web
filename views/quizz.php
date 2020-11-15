@@ -1,34 +1,65 @@
-<div class=" Quizzcontainer mt-sm-5 my-1">
-    <div class="Quizzquestion ml-sm-5 pl-sm-5 pt-2">
-    <?php
-                                                            
-      foreach ($donnees as $elt) 
-        {
-          ?>
 
-        <div class="Quizzpy-2 h5"><b><?=$elt->getLibelle();?></b></div>
-          <div class="Quizzml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
-        <?php
-                                                            
-          foreach ($data as $dat) 
-            {
-              if($elt->getId_question() == $dat->getId_question())
-              { 
-              ?>
-        
-           <label class="Quizzoptions"><?=$dat->getLibelle()?><input type="radio" name="radio"> <span class="Quizzcheckmark"></span> </label> 
 
-           <?php 
-              }
-            }
-           ?>
-        </div>
-        <?php 
-            }
-            
-           ?>
-    </div>
-    <div class="Quizzd-flex align-items-center pt-3">
-        <div class="Quizzml-auto mr-sm-5"> <button class="Quizzbtn btn-success">Next</button> </div>
-    </div>
-</div>
+      <div>
+       <!--   <h1 class="text-center text-white font-weight-bold text-uppercase bg-dark" >  Complete Quiz Website using PHP and MYSQL using Session</h1><br>
+      <div class="container "><br> -->
+         <h1 class="text-center text-white font-weight-bold text-uppercase bg-dark" >  Complete Quiz Website using PHP and MYSQL using Session </h1><br>
+      <div class="container "><br>
+         <div class="container">
+         
+            <!-- <h1 class="text-center text-success text-uppercase animateuse" >  ThapaTechnical  Webdeveloper Quiz </h1>
+            <br> -->
+            <div class=" col-lg-12 text-center">
+               <h3> <a href="#" class="text-uppercase text-warning"> <?php echo $_SESSION['nom']; ?>,</a> Welcome to ThapaTechnical Quiz </h3>
+            </div>
+            <br>
+            <div class="col-lg-8 d-block m-auto bg-light quizsetting ">
+               <div class="card">
+                  <p class="card-header text-center" > <?php echo $_SESSION['nom']; ?>, you have to select only one out of 4. Best of Luck <i class="fas fa-thumbs-up"></i>	 </p>
+               </div>
+               <br>
+               <form action="checked.php" method="post">
+                  <?php
+                     foreach ($donnees as $elt) 
+                      {
+                     	?>				
+                  <br>
+                  <div class="card">
+                     <br>
+                     <p class="card-header" >  <?=$elt->getLibelle();?> <input type="hidden" name="id_q" value="<?=$elt->getId_question()?>" ></p>
+                    
+                     <?php
+                       foreach ($data as $dat) 
+                       {
+                         if($elt->getId_question() == $dat->getId_question())
+                         { 
+                         ?>	
+                           
+                     <div class="card-block">
+                        <input type="radio" name="quizcheck[<?=$dat->getLibelle()?>]" id="<? echo $dat->getId_reponse(); ?>" value="<?php echo $dat->getValeur(); ?>" > <?=$dat->getLibelle()?> 
+                        <input type="hidden" name="id_r" value="<?=$dat->getId_reponse()?>" >
+                        <br>
+                     </div>
+                     <?php
+                        
+                        }
+                       } 
+                        } 
+                    
+                        
+                     ?>
+                  </div>
+
+                  <br>
+                  <input type="submit" name="submit" Value="Submit" class="btn btn-success m-auto d-block" /> <br>
+               </form>
+               <p id="letc"></p>
+            </div>
+            <br>
+            <a href="logout.php" class="btn btn-primary d-block m-auto text-white" > Logout </a> <br>
+         </div>
+         <br>
+      </div>
+        </ul>
+      </div>
+

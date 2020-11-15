@@ -53,15 +53,12 @@ body {
     border-radius: 50%
 }
 
-.Quizzoptions input:checked~.Quizzcheckmark:after {
-    display: block
-}
+.Quizzoptions input:checked~.Quizzcheckmark:after {}
 
 .Quizzoptions .Quizzcheckmark:after {
     content: "";
     width: 10px;
     height: 10px;
-    display: block;
     background: white;
     position: absolute;
     top: 50%;

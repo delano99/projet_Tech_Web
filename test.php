@@ -1,62 +1,34 @@
-<?php
-
-
-require_once('models/users.php');
-/* Définition du controller */
-class UsersController
-{
-
-
-// page d'authentification
-public function login()
-{
-	  set_route('views/Login.php');
-}
-public function connexion()
-{
-	//intance e la classe modele
-    $user= new Users();
-		$email= htmlspecialchars($_POST['email']);
-		$password= htmlspecialchars($_POST['password']);
-        if($email!="" && $password!="")
+<div class=" Quizzcontainer mt-sm-5 my-1">
+    <div class="Quizzquestion ml-sm-5 pl-sm-5 pt-2">
+    <?php
+                                                            
+      foreach ($donnees as $elt) 
         {
-	        if($user->Connexion($email,$password)== 1)
-	        	$this->redirection();	// on appelle la fonction de redirection
-	        else
-	           set_route('views/Login.php');
-   		}
-	    else 
-	    {
-        if(isset($_SESSION['connecté']))
-	    		$this->redirection();	// on appelle la fonction de redirection
-	    	else
-	    		set_route('views/Login.php');
-	    }
-}
-public function inscription()
-	{
-			set_route('views/inscription.php');
-	}
+          ?>
 
-public static function deconnexion()
-{
-	if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-    // on effectue un traitement spécifique pour l'ajax
+        <div class="Quizzpy-2 h5"><b><?=$elt->getLibelle();?></b></div>
+          <div class="Quizzml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+        <?php
+                                                            
+          foreach ($data as $dat) 
+            {
+              if($elt->getId_question() == $dat->getId_question())
+              { 
+              ?>
+        
+           <label class="Quizzoptions"><?=$dat->getLibelle()?><input type="radio" name="radio"> <span class="Quizzcheckmark"></span> </label> 
 
-		echo "je fais de l'ajax";
-
-			//set_route('index.php?controller=page?action=home');
-
-	}
-	else{
-		//echo "je fais de l'ajax";
-	$user= new Users();
-	$user->Deconnexion();
-
-	set_route('views/Login.php');
-	}
-}
-
-}
-
-?>
+           <?php 
+              }
+            }
+           ?>
+        </div>
+        <?php 
+            }
+            
+           ?>
+    </div>
+    <div class="Quizzd-flex align-items-center pt-3">
+        <div class="Quizzml-auto mr-sm-5"> <button class="Quizzbtn btn-success">Next</button> </div>
+    </div>
+</div>
