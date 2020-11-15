@@ -111,4 +111,27 @@ require_once('connexion.php');
       header('Location: ?controller=users&action=login');
     }
 
+
+    public static function recupUser($id_user)
+    {
+      $Db = new config();
+      $db = $Db::getInstance();
+      
+      $req=$db->prepare('SELECT id_user, nom,prenom, email FROM users WHERE id_user = ? ');
+      $req->execute(array($id_user));
+
+      foreach ($req->fetchAll() as $data)
+      {
+      
+        $user = new Users();
+        $user->setId_user($data['id_user']);
+        $user->setNom($data['nom']);
+        $user->setPrenom($data['prenom']);
+        $user->setEmail($data['email']);
+
+      }
+      //var_dump($list);
+      return $user ;
+    }
+
 }

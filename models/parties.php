@@ -68,6 +68,30 @@ require_once('connexion.php');
         
     }
 
+    public static function recupPartie($id_user)
+    {
+      $list=[];
+      $Db = new config();
+      $db = $Db::getInstance();
+      
+      $req=$db->prepare('SELECT id_partie, score,id_user, libelle FROM parties as p , type_question as tq WHERE id_user = ? and p.id_typeQuestion=tq.id_typeQuestion');
+      $req->execute(array($id_user));
+
+      foreach ($req->fetchAll() as $data)
+      {
+        $partie= new Parties();
+        $partie->setId_partie($data['id_partie']);
+        $partie->setScore($data['score']);
+        $partie->setId_users($data['id_user']);
+        
+
+        $list []= array('partie'=>$partie,'libelle'=>$data['libelle']);
+      }
+      //var_dump($list);
+      return $list ;
+    }
+
+
     
 
 }

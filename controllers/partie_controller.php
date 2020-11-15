@@ -32,7 +32,7 @@ public  function begin_game()
 		$counter =0;
 		$donnees = Questions::recupQuestion($_POST['id_q']);
 		$selected = $_POST['quizcheck'];
-		var_dump($selected);
+		//var_dump($selected);
 
 		foreach($donnees as $elt)
 		{
@@ -42,10 +42,26 @@ public  function begin_game()
 			}
 		}
 
-		var_dump($counter);
-		
 		Parties::inputPart($counter, $_SESSION['id_user'], $_POST['id_q']);
-		
+		set_donnees(Parties::recupPartie($_SESSION['id_user']));
+		set_data(Users::recupUser($_SESSION['id_user']));
+
+		set_res($counter);
+
+		switch($_POST['id_q']) {
+      case 1:
+        $dif = "Difficile";  
+        break;
+      case 2:
+        $dif = "Moyen";
+        break;
+      case 3:
+        $dif = "Facile";
+        break;
+			}
+			set_message($dif);
+
+		set_route('views/mon_profil.php');
 
   }
             
