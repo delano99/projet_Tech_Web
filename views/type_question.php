@@ -1,37 +1,48 @@
-<div>
-       <!--   <h1 class="text-center text-white font-weight-bold text-uppercase bg-dark" >  Complete Quiz Website using PHP and MYSQL using Session</h1><br>
-      <div class="container "><br> -->
-         
-      <div class="container "><br>
-         <div class="container">
-         
-            <!-- <h1 class="text-center text-success text-uppercase animateuse" >  ThapaTechnical  Webdeveloper Quiz </h1>
-            <br> -->
-            <div class=" col-lg-12 text-center">
-               <h3> <a href="#" class="text-uppercase text-warning"> </a> Choisir le niveau de la partie </h3>
+<section class="pricing-table">
+        <div class="container">
+            <div class="center">
+                <h2>Choisir le niveau de jeux</h2>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut &lt;br&gt; et dolore magna aliqua. Ut enim ad minim veniam </p>
             </div>
-            <br>
-            <div class="col-lg-8 d-block m-auto bg-light quizsetting ">
-            <form action="?controller=partie&action=begin_game" method="post">
-                  				
-
-                  <div class="card">
-                     <div class="card-block">
-                        
-                        <label class="form-check-label" for="formCheck-1">Difficile</label><input class="form-check-input" type="radio" name="niv" value="1" > 
-                        <input type="hidden" name="id_r" value="" ><br>
-
-
-                        <label class="form-check-label" for="formCheck-1">Moyen</label><input class="form-check-input" type="radio" name="niv" value="2">
-                        <input type="hidden" name="id_r" value="" ><br>
-
-                        <label class="form-check-label" for="formCheck-1">Facile</label><input type="hidden" name="id_r" value="" ><input class="form-check-input" type="radio" name="niv" value="3"><br>
-                     </div>
-                  </div>
-                  <input type="submit" name="submit" Value="Submit" class="btn btn-success m-auto d-block" /> <br>
-               </form>
-               <p id="letc"></p>
+            <div class="pricing-area text-center">
+                <div class="row">
+                    <div class="col-sm-4 plan price red wow fadeInDown">
+                        <ul class="list-group">
+                            <li class="list-group-item heading">
+                                <h1>Difficile</h1>
+                            </li>
+                            <li class="list-group-item"><span>L espoir n est plus permis</span></li>
+                            <li class="list-group-item"><span>10 question de tout type</span></li>
+                            <li class="list-group-item plan-action"><a class="btn" href="?controller=partie&action=game1">Sign Up</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 plan price green wow fadeInDown">
+                        <ul class="list-group">
+                            <li class="list-group-item heading">
+                                <h1>Moyen</h1>
+                            </li>
+                            <li class="list-group-item"><span>L espoir peut etre permis</span></li>
+                            <li class="list-group-item"><span>5 questions</span></li>
+                            <li class="list-group-item plan-action"><a class="btn" href="#?controller=partie&action=game2">Sign Up</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 plan price yellow wow fadeInDown">
+                        <ul class="list-group">
+                            <li class="list-group-item heading">
+                                <h1>Facile</h1>
+                            </li>
+                            <li class="list-group-item"><span>Le monde des bisous nours</span></li>
+                            <li class="list-group-item"><span>5 Questions</span></li>
+                            <li class="list-group-item plan-action"><a class="btn" href="?controller=partie&action=game3">Sign Up</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-         <br>
-      </div>
-      </div>
+        </div>
+    </section>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/current-day.js"></script>
+    <script src="assets/js/Pricing-Tables-1.js"></script>
+    <script src="assets/js/Pricing-Tables.js"></script>
+    <script src="assets/js/Profile-Edit-Form.js"></script>

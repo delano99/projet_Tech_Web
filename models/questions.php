@@ -6,6 +6,7 @@ require_once('connexion.php');
     private $id_question;
     private $libelle;
     private $typeQuestion;
+    private $tQuestion;
 
 
     public function __construct(){}
@@ -23,7 +24,12 @@ require_once('connexion.php');
     public function getTypeQuestion()
     {
     return $this->typeQuestion;
-    }    
+    } 
+    
+    public function getTQuestion()
+    {
+    return $this->tQuestion;
+    }
 
     
     // les set              
@@ -43,18 +49,23 @@ require_once('connexion.php');
     {
       $this->typeQuestion=$typeQuestion;
     }
+
+    public function setTQuestion($tQuestion)
+    {
+      $this->typeQuestion=$tQuestion;
+    }
    
 
     
 
-    public static function recupQuestion($id_TypeQuestion)
+    public static function recupQuestion($id_TypeQuestion,$tquestion)
     {
       $list=[];
       $Db = new config();
       $db = $Db::getInstance();
       
-      $req=$db->prepare('SELECT id_question, libelle, id_TypeQuestion FROM questions WHERE id_TypeQuestion = ?');
-      $req->execute(array($id_TypeQuestion));
+      $req=$db->prepare('SELECT id_question, libelle, id_TypeQuestion, tquestion FROM questions WHERE id_TypeQuestion = ? and tquestion =?');
+      $req->execute(array($id_TypeQuestion,$tquestion));
 
       
       
@@ -64,7 +75,7 @@ require_once('connexion.php');
         $question->setId_question($data['id_question']);
         $question->setLibelle($data['libelle']);
         $question->setTypeQuestion($data['id_TypeQuestion']);
-        
+        $question->setTQuestion($data['tquestion']);
 
         $list []=  $question;
       }

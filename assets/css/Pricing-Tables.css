@@ -107,17 +107,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .pricing-area .price.red .heading, .pricing-area .price.red .plan-action .btn {
-  background: #e24f43 none repeat scroll 0 0;
+  background: #af6e69 none repeat scroll 0 0;
   color: #ffffff;
 }
 
 .pricing-area .price.green .heading, .pricing-area .price.green .plan-action .btn {
-  background: #27ae60 none repeat scroll 0 0;
+  background: #718f6f none repeat scroll 0 0;
   color: #ffffff;
 }
 
 .pricing-area .price.yellow .heading, .pricing-area .price.yellow .plan-action .btn {
-  background: #f39c12 none repeat scroll 0 0;
+  background: #85765e none repeat scroll 0 0;
   color: #ffffff;
 }
 
