@@ -23,7 +23,7 @@
                             </li>
                             <li class="list-group-item"><span>L espoir peut etre permis</span></li>
                             <li class="list-group-item"><span>5 questions</span></li>
-                            <li class="list-group-item plan-action"><a class="btn" href="#?controller=partie&action=game2">Sign Up</a></li>
+                            <li class="list-group-item plan-action"><a class="btn" href="?controller=partie&action=game2">Sign Up</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-4 plan price yellow wow fadeInDown">

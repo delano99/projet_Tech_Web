@@ -34,6 +34,8 @@ public  function begin_game()
 		{    
 			 set_donnees(Questions::recupQuestion(3,1)); // on récupère la liste des questions de notre bdd
 			 set_data(Reponses::recupReponse(3)); // on récupère la liste des questions de notre bdd
+			 //var_dump(Questions::recupQuestion(3,1));
+			 //var_dump(Reponses::recupReponse(3));
 			 set_controller_report('page');
 			 set_fonction_back('home');
 
@@ -43,7 +45,27 @@ public  function begin_game()
 					set_route('views/login.php');
 	}
 
-	public function verif_game1()
+	public function game2()
+	{
+
+		if( isset($_SESSION['id_user']))
+		{    
+			 set_donnees(Questions::recupQuestion(2,1)); // on récupère la liste des questions de notre bdd
+			 set_donnees1(Questions::recupQuestion(2,2)); 
+			 set_data(Reponses::recupReponse(3)); // on récupère la liste des questions de notre bdd
+			 set_controller_report('page');
+			 set_fonction_back('home');
+
+			 set_route('views/quizz_moyen.php');
+		}
+			else
+					set_route('views/login.php');
+	}
+
+	
+	
+
+	public function verif_game3()
 	{
 		if(isset($_POST['id_q']))
 		{
@@ -52,10 +74,11 @@ public  function begin_game()
 			$donnees = Questions::recupQuestion(3,1);
 			//var_dump($donnees);
 			$selected = $_POST['quizcheck'];
-			//var_dump($selected);
+			var_dump($selected);
 	
 			foreach($donnees as $elt)
 			{
+				var_dump($selected[$elt->getId_question()]);
 				$list_reponse =  Reponses::recupValeur($selected[$elt->getId_question()]);
 				//
 				foreach($list_reponse as $reponse)
@@ -69,7 +92,7 @@ public  function begin_game()
 				}	
 
 			}
-			var_dump($list_reponse);
+			var_dump($list);
 			Parties::inputPart($counter, $_SESSION['id_user'], 3);
 			set_donnees(Questions::recupQuestion(3,1)); // on récupère la liste des questions de notre bdd
 			set_data(Reponses::recupReponse(3)); // on récupère la liste des questions de notre bdd
