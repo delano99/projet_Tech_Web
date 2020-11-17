@@ -106,7 +106,7 @@ Latest commit bb3157e 2 days ago
                                     ?>	
                                        
                                     <div class="card-block">
-                                       <input type="radio" name="quizcheck[<?=$dat->getId_question()?>]" id="<? echo $dat->getId_reponse(); ?>" value="<?php echo $dat->getId_reponse(); ?>" > <?=$dat->getLibelle()?> 
+                                       <input type="radio" checked="checked" name="quizcheck[<?=$dat->getId_question()?>]" id="<? echo $dat->getId_reponse(); ?>" value="<?php echo $dat->getId_reponse(); ?>" > <?=$dat->getLibelle()?> 
                                        <span style="color: black; font-style: oblique; background : red;">  &nbsp;&nbsp;mauvaise reponse    </span> </br>
                                     </div>
                                     <?php
@@ -117,8 +117,8 @@ Latest commit bb3157e 2 days ago
                                     
                                        ?>
                                        <div class="card-block">
-                                          <input type="radio" name="quizcheck[<?=$dat->getId_question()?>]" id="<? echo $dat->getId_reponse(); ?>" value="<?php echo $dat->getId_reponse(); ?>" > <?=$dat->getLibelle()?> 
-                                          <span style="color: black; font-style: oblique; background : red;">	  &nbsp;&nbsp;Bonne reponse    </span> </br>
+                                          <input type="radio" checked="checked" name="quizcheck[<?=$dat->getId_question()?>]" id="<? echo $dat->getId_reponse(); ?>" value="<?php echo $dat->getId_reponse(); ?>" > <?=$dat->getLibelle()?> 
+                                          <span style="color: black; font-style: oblique; background : green;">	  &nbsp;&nbsp;Bonne reponse    </span> </br>
                                  
                                        </div>
                                        <?php
