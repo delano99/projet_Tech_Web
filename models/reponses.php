@@ -58,14 +58,14 @@ require_once('connexion.php');
 
     
 
-    public static function recupReponse($id_TypeQuestion)
+    public static function recupReponse($id_TypeQuestion,$tquestion)
     {
       $list=[];
       $Db = new config();
       $db = $Db::getInstance();
       
-      $req=$db->prepare('SELECT r.id_reponse , r.libelle, r.valeur, q.id_question FROM reponses as r, questions as q WHERE r.id_question = q.id_question and q.id_TypeQuestion =?');
-      $req->execute(array($id_TypeQuestion));
+      $req=$db->prepare('SELECT r.id_reponse , r.libelle, r.valeur, q.id_question FROM reponses as r, questions as q WHERE r.id_question = q.id_question and q.id_TypeQuestion =? and q.tquestion = ?');
+      $req->execute(array($id_TypeQuestion,$tquestion));
       
       
       foreach ($req->fetchAll() as $data)

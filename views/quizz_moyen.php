@@ -47,13 +47,13 @@ Latest commit bb3157e 2 days ago
                   <p class="card-header text-center" > <?php echo $_SESSION['nom']; ?>, you have to select only one out of 4. Best of Luck <i class="fas fa-thumbs-up"></i>	 </p>
                </div>
                <br>
-               <form action="?controller=partie&action=verif_game3" method="post">
+               <form action="?controller=partie&action=verif_game2" method="post">
                   <?php
-                  if(!isset($donnees1))
+                  if(!isset($donnees5))
                   {
 
                   
-                     foreach ($donnees as $elt) 
+                     foreach ($donnees1 as $elt) 
                       {
                      	?>				
                   			
@@ -63,14 +63,15 @@ Latest commit bb3157e 2 days ago
                            <p class="card-header" >  <?=$elt->getLibelle();?> <input type="hidden" name="id_q" value="<?=$elt->getTypeQuestion()?>" ></p>
                         
                            <?php
-                           foreach ($data as $dat) 
+                           //var_dump($rep1);
+                           foreach ($rep1 as $dat) 
                            {
                               if($elt->getId_question() == $dat->getId_question())
                               { 
                               ?>	
                                  
                            <div class="card-block">
-                              <input type="radio" name="quizcheck[<?=$elt->getId_question()?>]" id="<? echo $dat->getId_reponse(); ?>" value="<?php echo $dat->getId_reponse(); ?>" > <?=$dat->getLibelle()?> 
+                              <input type="radio" name="quizcheck1[<?=$elt->getId_question()?>]" id="<? echo $dat->getId_reponse(); ?>" value="<?php echo $dat->getId_reponse(); ?>" > <?=$dat->getLibelle()?> 
                               <br>
                            </div>
                            <?php
@@ -78,6 +79,36 @@ Latest commit bb3157e 2 days ago
                            }
                      } 
                   } 
+
+                  foreach ($donnees2 as $elt) 
+                      {
+                     	?>				
+                  			
+                        <br>
+                        <div class="card">
+                           <br>
+
+                           <p class="card-header" >  <?=$elt->getLibelle();?> <input type="hidden" name="id_q" value="<?=$elt->getTypeQuestion()?>" ></p>
+                           <select name="quizcheck2[<?=$elt->getId_question()?>]" id="pet-select">
+                              <option value="">--Please choose an option--</option>
+                           <?php
+                           foreach ($rep2 as $dat) 
+                           {
+                              if($elt->getId_question() == $dat->getId_question())
+                              { 
+                              ?>
+                              <option value="<?php echo $dat->getId_reponse(); ?>"><?=$dat->getLibelle()?></option>
+                              
+                           <?php
+                              
+                           }
+                     } 
+                     ?>
+                     </select>
+                     <?php
+                  } 
+
+
                }
 
                else
@@ -153,7 +184,7 @@ Latest commit bb3157e 2 days ago
 
                   <br>
                   <?php
-                     if(!isset($donnees2))
+                     if(!isset($donnees7))
                      {
                   ?>
                      <input type="submit" name="submit" Value="Submit" class="btn btn-success m-auto d-block" /> <br>

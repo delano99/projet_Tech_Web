@@ -57,6 +57,19 @@
 		global $donnees3;
 		$donnees3=$data;                                                                                                                                                                              
 	}
+	
+	function set_rep1($data){
+		global $rep1;
+		$rep1=$data;                                                                                                                                                                                 
+		}
+		function set_rep2($data){
+			global $rep2;
+			$rep2=$data;                                                                                                                                                                                 
+			}
+	function set_rep3($data){
+		global $rep3;
+		$rep3=$data;                                                                                                                                                                              
+	}
 	function set_donnees($data){
 		global $donnees;
 		$donnees=$data;                                                                                                                                                                                 

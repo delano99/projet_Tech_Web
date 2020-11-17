@@ -33,7 +33,7 @@ public  function begin_game()
 		if( isset($_SESSION['id_user']))
 		{    
 			 set_donnees(Questions::recupQuestion(3,1)); // on récupère la liste des questions de notre bdd
-			 set_data(Reponses::recupReponse(3)); // on récupère la liste des questions de notre bdd
+			 set_data(Reponses::recupReponse(3,1)); // on récupère la liste des questions de notre bdd
 			 //var_dump(Questions::recupQuestion(3,1));
 			 //var_dump(Reponses::recupReponse(3));
 			 set_controller_report('page');
@@ -50,9 +50,10 @@ public  function begin_game()
 
 		if( isset($_SESSION['id_user']))
 		{    
-			 set_donnees(Questions::recupQuestion(2,1)); // on récupère la liste des questions de notre bdd
-			 set_donnees1(Questions::recupQuestion(2,2)); 
-			 set_data(Reponses::recupReponse(3)); // on récupère la liste des questions de notre bdd
+			 set_donnees1(Questions::recupQuestion(2,1)); // on récupère la liste des questions de notre bdd
+			 set_donnees2(Questions::recupQuestion(2,2)); 
+			 set_rep1(Reponses::recupReponse(2,1)); // on récupère la liste des questions de notre bdd
+			 set_rep2(Reponses::recupReponse(2,2)); // on récupère la liste des questions de notre bdd
 			 set_controller_report('page');
 			 set_fonction_back('home');
 
@@ -95,6 +96,46 @@ public  function begin_game()
 			//var_dump($list);
 			Parties::inputPart($counter, $_SESSION['id_user'], 3);
 			set_donnees(Questions::recupQuestion(3,1)); // on récupère la liste des questions de notre bdd
+			set_data(Reponses::recupReponse(3,1)); // on récupère la liste des questions de notre bdd
+			set_donnees1($list);
+			set_donnees2($counter);
+
+
+			set_route('views/quizz_facile.php');
+		}
+	}
+	
+	
+	public function verif_game2()
+	{
+		if(isset($_POST['id_q']))
+		{
+			$list = [];
+			$counter =0;
+			$donnees = Questions::recupQuestion(3,1);
+			//var_dump($donnees);
+			$selected = $_POST['quizcheck'];
+			//var_dump($selected);
+	
+			foreach($donnees as $elt)
+			{
+				//var_dump($selected[$elt->getId_question()]);
+				$list_reponse =  Reponses::recupValeur($selected[$elt->getId_question()]);
+				//
+				foreach($list_reponse as $reponse)
+				{
+					if($reponse->getValeur() == 1)
+					{
+						$counter++;
+					}
+
+					$list [] = $reponse;
+				}	
+
+			}
+			//var_dump($list);
+			Parties::inputPart($counter, $_SESSION['id_user'], 3);
+			set_donnees(Questions::recupQuestion(3,1)); // on récupère la liste des questions de notre bdd
 			set_data(Reponses::recupReponse(3)); // on récupère la liste des questions de notre bdd
 			set_donnees1($list);
 			set_donnees2($counter);
@@ -103,7 +144,31 @@ public  function begin_game()
 			set_route('views/quizz_facile.php');
 		}
 	}
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   public  function verif_game()
   {
 		if(isset($_POST['id_q']))
