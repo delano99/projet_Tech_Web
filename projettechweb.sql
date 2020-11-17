@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : Dim 15 nov. 2020 à 17:38
+-- Généré le : mar. 17 nov. 2020 à 22:53
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `parties` (
   PRIMARY KEY (`id_partie`),
   KEY `fk_client_numero` (`id_user`),
   KEY `fk_part_typeQuest` (`id_typeQuestion`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=118 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `parties`
@@ -82,7 +82,84 @@ INSERT INTO `parties` (`id_partie`, `score`, `id_user`, `id_typeQuestion`) VALUE
 (37, 1, 3, 2),
 (38, 1, 3, 2),
 (39, 1, 3, 2),
-(40, 1, 3, 3);
+(40, 1, 3, 3),
+(41, 0, 3, 1),
+(42, 0, 3, 1),
+(43, 0, 3, 1),
+(44, 0, 3, 1),
+(45, 0, 3, 1),
+(46, 0, 3, 1),
+(47, 3, 3, 1),
+(48, 3, 3, 3),
+(49, 3, 3, 3),
+(50, 3, 3, 3),
+(51, 3, 3, 3),
+(52, 3, 3, 3),
+(53, 3, 3, 3),
+(54, 3, 3, 3),
+(55, 3, 3, 3),
+(56, 3, 3, 3),
+(57, 3, 3, 3),
+(58, 3, 3, 3),
+(59, 1, 3, 3),
+(60, 0, 3, 3),
+(61, 4, 3, 3),
+(62, 4, 3, 3),
+(63, 4, 3, 3),
+(64, 4, 3, 3),
+(65, 4, 3, 3),
+(66, 4, 3, 3),
+(67, 4, 3, 3),
+(68, 4, 3, 3),
+(69, 4, 3, 3),
+(70, 4, 3, 3),
+(71, 4, 3, 3),
+(72, 4, 3, 3),
+(73, 4, 3, 3),
+(74, 4, 3, 3),
+(75, 4, 3, 3),
+(76, 4, 3, 3),
+(77, 4, 3, 3),
+(78, 4, 3, 3),
+(79, 4, 3, 3),
+(80, 4, 3, 3),
+(81, 4, 3, 3),
+(82, 4, 3, 3),
+(83, 4, 3, 3),
+(84, 4, 3, 3),
+(85, 4, 3, 3),
+(86, 2, 3, 3),
+(87, 3, 3, 3),
+(88, 3, 3, 3),
+(89, 3, 3, 3),
+(90, 3, 3, 3),
+(91, 3, 3, 3),
+(92, 4, 3, 3),
+(93, 4, 3, 3),
+(94, 4, 3, 3),
+(95, 4, 3, 3),
+(96, 4, 3, 3),
+(97, 4, 3, 3),
+(98, 4, 3, 3),
+(99, 4, 3, 3),
+(100, 4, 3, 3),
+(101, 4, 3, 3),
+(102, 4, 3, 3),
+(103, 4, 3, 3),
+(104, 4, 3, 3),
+(105, 5, 3, 3),
+(106, 2, 3, 3),
+(107, 4, 3, 3),
+(108, 4, 3, 3),
+(109, 4, 3, 3),
+(110, 4, 3, 3),
+(111, 4, 3, 3),
+(112, 4, 3, 3),
+(113, 1, 3, 3),
+(114, 2, 3, 3),
+(115, 2, 3, 3),
+(116, 2, 3, 3),
+(117, 2, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -95,16 +172,16 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `id_question` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(255) NOT NULL,
   `id_TypeQuestion` int(11) NOT NULL,
-  `nb_reponses` int(11) NOT NULL,
+  `tquestion` int(11) NOT NULL,
   PRIMARY KEY (`id_question`),
   KEY `fk_question` (`id_TypeQuestion`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `questions`
 --
 
-INSERT INTO `questions` (`id_question`, `libelle`, `id_TypeQuestion`, `nb_reponses`) VALUES
+INSERT INTO `questions` (`id_question`, `libelle`, `id_TypeQuestion`, `tquestion`) VALUES
 (1, 'LE PERE DE NARUTO', 3, 1),
 (2, 'LA MERE DE NARUTO', 3, 1),
 (3, 'LE NOM COMPLET DE NARUTO', 3, 1),
@@ -112,14 +189,17 @@ INSERT INTO `questions` (`id_question`, `libelle`, `id_TypeQuestion`, `nb_repons
 (5, 'LE MEILLEUR AMIE DE KILUA DANS HUNTER HUNTER', 3, 1),
 (6, 'COMBIEN DE TYPES DE HATSU EXISTE T ILS DANS HUNTER HUNTER', 2, 1),
 (7, 'Qui tua le Grand Pope pour prendre sa place', 2, 1),
-(8, 'Combien de Chevaliers d\'Or les Chevaliers de Bronze affrontent-ils ', 2, 1),
-(9, 'Pour Seiya, qui est Marine', 2, 1),
-(10, 'En qui le dieu Poséidon se réincarne-t-il', 2, 1),
+(8, 'Combien de Chevaliers d\'Or les Chevaliers de Bronze affrontent-ils ', 2, 2),
+(9, 'Pour Seiya, qui est Marine', 2, 2),
+(10, 'En qui le dieu Poséidon se réincarne-t-il', 2, 2),
 (11, 'Où le dieu Hadès cache-t-il son corps depuis les temps mythologiques', 1, 1),
 (12, 'Quelle phrase le maître des frères Elric, Izumi Curtis, leur a-t-elle enseigné lors de leur entraînement', 1, 1),
-(13, 'Que fait Paninya lorsqu\'elle rencontre les frères Elric à Rush Valley ', 1, 1),
-(14, 'Lin Yao est à la recherche du secret de la vie éternelle. C\'est un des fils de l\'Empereur de Xing. Lequel ', 1, 1),
-(15, 'Fu est l\'un des serviteurs de Lin Yao, ainsi que le grand-père de Ranfan. Qui escorte-t-il jusqu\'à Xing', 1, 1);
+(13, 'Que fait Paninya lorsqu\'elle rencontre les frères Elric à Rush Valley ', 1, 2),
+(14, 'Lin Yao est à la recherche du secret de la vie éternelle. C\'est un des fils de l\'Empereur de Xing. Lequel ', 1, 2),
+(15, 'Fu est l\'un des serviteurs de Lin Yao, ainsi que le grand-père de Ranfan. Qui escorte-t-il jusqu\'à Xing', 1, 2),
+(16, 'Qui est le roi des dieux', 1, 3),
+(17, 'Qui est la deesse de la guerre?', 1, 3),
+(18, 'avec qui le deesse de guerre effectue une guerre sainte tout les 200 ans?\r\n', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -135,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `reponses` (
   `id_question` int(11) NOT NULL,
   PRIMARY KEY (`id_reponse`),
   KEY `fk_reponse` (`id_question`)
-) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `reponses`
@@ -186,7 +266,10 @@ INSERT INTO `reponses` (`id_reponse`, `libelle`, `valeur`, `id_question`) VALUES
 (42, 'Le dix-septième', 1, 14),
 (43, 'Le sous-lieutenant Havoc', 0, 15),
 (44, 'Le sous-lieutenant Ross', 1, 15),
-(45, 'Le sous-lieutenant Falman', 0, 15);
+(45, 'Le sous-lieutenant Falman', 0, 15),
+(46, 'zeus', 1, 16),
+(47, 'athena', 1, 17),
+(48, 'adaes', 1, 18);
 
 -- --------------------------------------------------------
 

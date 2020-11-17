@@ -82,7 +82,7 @@ Latest commit bb3157e 2 days ago
 
                else
                {
-                  var_dump($donnees1);
+                  
                   $i = 0;
                   foreach ($donnees as $elt) 
                       {

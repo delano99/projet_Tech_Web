@@ -74,11 +74,11 @@ public  function begin_game()
 			$donnees = Questions::recupQuestion(3,1);
 			//var_dump($donnees);
 			$selected = $_POST['quizcheck'];
-			var_dump($selected);
+			//var_dump($selected);
 	
 			foreach($donnees as $elt)
 			{
-				var_dump($selected[$elt->getId_question()]);
+				//var_dump($selected[$elt->getId_question()]);
 				$list_reponse =  Reponses::recupValeur($selected[$elt->getId_question()]);
 				//
 				foreach($list_reponse as $reponse)
@@ -92,7 +92,7 @@ public  function begin_game()
 				}	
 
 			}
-			var_dump($list);
+			//var_dump($list);
 			Parties::inputPart($counter, $_SESSION['id_user'], 3);
 			set_donnees(Questions::recupQuestion(3,1)); // on récupère la liste des questions de notre bdd
 			set_data(Reponses::recupReponse(3)); // on récupère la liste des questions de notre bdd
