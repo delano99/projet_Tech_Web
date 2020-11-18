@@ -64,17 +64,17 @@ public  function begin_game()
 	}
 
 	
-	public function game3()
+	public function game1()
 	{
 
 		if( isset($_SESSION['id_user']))
 		{    
-			 set_donnees1(Questions::recupQuestion(3,1)); // on récupère la liste des questions de notre bdd
-			 set_donnees2(Questions::recupQuestion(3,2)); 
-			 set_donnees2(Questions::recupQuestion(3,3)); 
-			 set_rep1(Reponses::recupReponse(3,1)); // on récupère la liste des questions de notre bdd
-			 set_rep2(Reponses::recupReponse(3,2));
-			 set_rep2(Reponses::recupReponse(3,3)); // on récupère la liste des questions de notre bdd
+			 set_donnees1(Questions::recupQuestion(1,1)); // on récupère la liste des questions de notre bdd
+			 set_donnees2(Questions::recupQuestion(1,2)); 
+			 set_donnees3(Questions::recupQuestion(1,3)); 
+			 set_rep1(Reponses::recupReponse(1,1)); // on récupère la liste des questions de notre bdd
+			 set_rep2(Reponses::recupReponse(1,2));
+			 set_rep3(Reponses::recupReponse(1,3)); // on récupère la liste des questions de notre bdd
 			 set_controller_report('page');
 			 set_fonction_back('home');
 

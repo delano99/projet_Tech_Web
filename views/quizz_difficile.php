@@ -18,9 +18,9 @@
                   <p class="card-header text-center" > <?php echo $_SESSION['nom']; ?>, you have to select only one out of 4. Best of Luck <i class="fas fa-thumbs-up"></i>	 </p>
                </div>
                <br>
-               <form action="?controller=partie&action=verif_game2" method="post">
+               <form action="?controller=partie&action=verif_game1" method="post">
                   <?php
-                  if(!isset($rep_send1) || !isset($rep_send2))
+                  if(!isset($rep_send1) || !isset($rep_send2) || !isset($rep_send3))
                   {
 
                   
@@ -52,6 +52,38 @@
                   } 
                   ?>
                   <div class="card">
+                            <p class="card-header text-center" > Select juste la questions suivantes<i class="fas fa-thumbs-up"></i>	 </p>
+                        </div>
+                  <?php
+                  foreach ($donnees3 as $elt) 
+                      {
+                     	?>				
+                  			
+                        <br>
+                        </div>
+                        <div class="card">
+                           <br>
+                           <p class="card-header" >  <?=$elt->getLibelle();?> <input type="hidden" name="id_q" value="<?=$elt->getTypeQuestion()?>" ></p>
+                        
+                           <?php
+                           //var_dump($rep1);
+                           foreach ($rep3 as $dat) 
+                           {
+                              if($elt->getId_question() == $dat->getId_question())
+                              { 
+                              ?>	
+                                 
+                           <div class="card-block">
+                              <input type="text" name="quizcheck1[<?=$elt->getId_question()?>]" id="<? echo $dat->getId_reponse(); ?>" value="" >
+                              <br>
+                           </div>
+                           <?php
+                              
+                           }
+                     } 
+                  }
+                  ?>
+                  <div class="card">
                             <p class="card-header text-center" >  Select juste la bonne reponse pour questions suivantes<i class="fas fa-thumbs-up"></i>	 </p>
                         </div>
                   <?php
@@ -61,6 +93,8 @@
                      	?>				
                   			
                         <br>
+                        
+                        
                         <div class="card">
                            <br>
 
@@ -245,6 +279,8 @@
                <p id="letc"></p>
             </div>
          <br>
+      </div>
+      </div>
       </div>
       </div>
       </div>
