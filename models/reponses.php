@@ -88,7 +88,7 @@ require_once('connexion.php');
       $Db = new config();
       $db = $Db::getInstance();
       
-      $req=$db->prepare('SELECT r.id_reponse , r.valeur , q.id_question  FROM reponses as r, questions as q WHERE r.id_question = q.id_question and r.id_reponse =?');
+      $req=$db->prepare('SELECT r.id_reponse , r.valeur, r.libelle , q.id_question  FROM reponses as r, questions as q WHERE r.id_question = q.id_question and r.id_reponse =?');
       $req->execute(array($id_reponse));
       
       
@@ -96,6 +96,7 @@ require_once('connexion.php');
       {
         $reponse= new Reponses();
         $reponse->setId_reponse($data['id_reponse']);
+        $reponse->setLibelle($data['libelle']);
         $reponse->setValeur($data['valeur']);
         $reponse->setId_question($data['id_question']);
         $list []=  $reponse;
@@ -103,8 +104,6 @@ require_once('connexion.php');
       return $list ;
       
     }
-
-
 }
 
 

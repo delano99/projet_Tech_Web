@@ -184,7 +184,9 @@ public  function begin_game()
 			set_rep1(Reponses::recupReponse(2,1)); // on récupère la liste des questions de notre bdd
 		  set_rep2(Reponses::recupReponse(2,2)); // on récupère la liste des questions de notre bdd
 			set_rep_send1($list1);
+			//var_dump($list2);
 			set_rep_send2($list2);
+			
 			set_counter($counter);
 			set_controller_report('page');
 			set_fonction_back('home');
@@ -194,6 +196,90 @@ public  function begin_game()
 	}
 
 
+	
+	public function verif_game1()
+	{
+		if(isset($_POST['id_q']))
+		{
+			$list1 = [];
+			$list2 = [];
+			$list3 = [];
+			$counter =0;
+			$donnees1 = Questions::recupQuestion(1,1);
+			$donnees2 = Questions::recupQuestion(1,2);
+			$donnees3 = Questions::recupQuestion(1,3);
+			//var_dump($donnees);
+			$selected1 = $_POST['quizcheck1'];
+			$selected2 = $_POST['quizcheck2'];
+			$selected3 = $_POST['quizcheck3'];
+			//var_dump($selected);
+	
+			foreach($donnees1 as $elt)
+			{
+				//var_dump($selected[$elt->getId_question()]);
+				$list_reponse =  Reponses::recupValeur($selected1[$elt->getId_question()]);
+				//
+				foreach($list_reponse as $reponse)
+				{
+					if($reponse->getValeur() == 1)
+					{
+						$counter++;
+					}
+
+					$list1 [] = $reponse;
+				}	
+
+			}
+
+			foreach($donnees2 as $elt)
+			{
+				//var_dump($selected[$elt->getId_question()]);
+				$list_reponse =  Reponses::recupValeur($selected2[$elt->getId_question()]);
+				//
+				foreach($list_reponse as $reponse)
+				{
+					if($reponse->getValeur() == 1)
+					{
+						$counter++;
+					}
+
+					$list2 [] = $reponse;
+				}	
+
+			}
+
+			foreach($donnees3 as $elt)
+			{
+				//var_dump($selected[$elt->getId_question()]);
+				$list_reponse =  Reponses::recupReponse(1,3);
+				//
+				foreach($list_reponse as $reponse)
+				{
+					if($reponse->getLibelle() == $selected3[$elt->getId_question()])
+					{
+						$counter++;
+					}
+				}	
+
+			}
+			//var_dump($list);
+			Parties::inputPart($counter, $_SESSION['id_user'], 1);
+			set_donnees1(Questions::recupQuestion(1,1)); // on récupère la liste des questions de notre bdd
+			set_donnees2(Questions::recupQuestion(1,2)); 
+			set_donnees3(Questions::recupQuestion(1,3));
+			set_rep1(Reponses::recupReponse(1,1)); // on récupère la liste des questions de notre bdd
+			set_rep2(Reponses::recupReponse(1,2));
+			set_rep3(Reponses::recupReponse(1,3)); // on récupère la liste des questions de notre bdd
+			set_rep_send1($list1);
+			set_rep_send2($list2);
+			set_rep_send3($selected3);
+			set_counter($counter);
+			set_controller_report('page');
+			set_fonction_back('home');
+
+			set_route('views/quizz_difficile.php');
+		}
+	}
 
 
 

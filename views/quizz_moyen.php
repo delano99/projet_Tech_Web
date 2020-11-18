@@ -153,9 +153,10 @@
                         }
                       
                   } 
-                  $i++;
+                  if($j < sizeof($rep_send2))
+                     $i++;
                }
-
+               //var_dump($rep_send2);
                foreach ($donnees2 as $elt) 
                       {
                      	?>				
@@ -165,9 +166,10 @@
                      
                      <p class="card-header" >  <?=$elt->getLibelle();?> <input type="hidden" name="id_q" value="<?=$elt->getTypeQuestion()?>" ></p>
                      <select name="quizcheck2[<?=$elt->getId_question()?>]" id="pet-select">
-                              <option value="">--Please choose an option--</option>
+                              
                     
                      <?php
+                     var_dump($rep_send2);
                       foreach ($rep2 as $dat)
                       { 
                        
@@ -181,16 +183,16 @@
                                  {
                                      
                                     ?>	
-                                    <option  value="<?php echo $dat->getId_reponse(); ?>" style="color:red;" selected><?=$dat->getLibelle()?></option>
+                                    <option  value="<?php echo $dat->getId_reponse(); ?>" style="background : red;" selected><?=$rep_send2[$j]->getLibelle()?><span style="color: black; font-style: oblique; background : red;">  &nbsp;&nbsp;///mauvaise reponse    </span></option>
                                     
                                     <?php
                                     
                                   }
-                              else if($rep_send1[$j]->getValeur() == 1)
+                              else if($rep_send2[$j]->getValeur() == 1)
                                  {
                                     
                                        ?>
-                                      <option  value="<?php echo $dat->getId_reponse(); ?>" style="color:green;" selected><?=$dat->getLibelle()?></option>
+                                      <option  value="<?php echo $dat->getId_reponse(); ?>" style="background : green;" selected><?=$rep_send2[$j]->getLibelle()?><span style="color: black; font-style: oblique; background : green;">  &nbsp;&nbsp;///bonne reponse    </span></option>
                                        
                                        <?php
                                         
@@ -201,7 +203,7 @@
                               else
                                  {
                                     ?>
-                                    <option  value="<?php echo $dat->getId_reponse(); ?>" style="color:black;" selected><?=$dat->getLibelle()?></option>
+                                    <option  value="<?php echo $dat->getId_reponse(); ?>" style="color:black;" ><?=$dat->getLibelle()?></option>
                                     <?php
                                  } 
                         
@@ -212,8 +214,8 @@
                   ?>
                   </select>
                   <?php
-                  
-                  $i++;
+                  if($j < sizeof($rep_send2))
+                     $j++;
                }
             }
                         

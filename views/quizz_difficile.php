@@ -74,7 +74,7 @@
                               ?>	
                                  
                            <div class="card-block">
-                              <input type="text" name="quizcheck1[<?=$elt->getId_question()?>]" id="<? echo $dat->getId_reponse(); ?>" value="" >
+                              <input type="text" name="quizcheck3[<?=$elt->getId_question()?>]" id="<? echo $dat->getId_reponse(); ?>" value="" >
                               <br>
                            </div>
                            <?php
@@ -126,6 +126,7 @@
                   
                   $i = 0;
                   $j=0;
+                  $k=0;
                   
                   foreach ($donnees1 as $elt) 
                       {
@@ -190,65 +191,133 @@
                   $i++;
                }
 
-               foreach ($donnees2 as $elt) 
-                      {
-                     	?>				
-                  <br>
-                  <div class="card">
-                     <br>
-                     
-                     <p class="card-header" >  <?=$elt->getLibelle();?> <input type="hidden" name="id_q" value="<?=$elt->getTypeQuestion()?>" ></p>
-                     <select name="quizcheck2[<?=$elt->getId_question()?>]" id="pet-select">
-                              <option value="">--Please choose an option--</option>
-                    
-                     <?php
-                      foreach ($rep2 as $dat)
-                      { 
-                       
-                        if($elt->getId_question() == $dat->getId_question())
-                        {
-                           
-                              
-                              if($rep_send2[$j]->getId_reponse() == $dat->getId_reponse())
-                              {
-                                 if($rep_send2[$j]->getValeur() == 0)
-                                 {
-                                     
-                                    ?>	
-                                    <option  value="<?php echo $dat->getId_reponse(); ?>" style="color:red;" selected><?=$dat->getLibelle()?></option>
-                                    
-                                    <?php
-                                    
-                                  }
-                              else if($rep_send1[$j]->getValeur() == 1)
-                                 {
-                                    
-                                       ?>
-                                      <option  value="<?php echo $dat->getId_reponse(); ?>" style="color:green;" selected><?=$dat->getLibelle()?></option>
-                                       
-                                       <?php
-                                        
-                                 }
-                             
-
-                            }
-                              else
-                                 {
-                                    ?>
-                                    <option  value="<?php echo $dat->getId_reponse(); ?>" style="color:black;" selected><?=$dat->getLibelle()?></option>
-                                    <?php
-                                 } 
-                        
-                                   
-                        }
+               ?>
                       
-                  } 
-                  ?>
-                  </select>
+
+
+                      <div class="card">
+                            <p class="card-header text-center" > Resultat des questions ouverte<i class="fas fa-thumbs-up"></i>	 </p>
+                        </div>
                   <?php
                   
-                  $i++;
-               }
+
+
+                  foreach ($donnees3 as $elt) 
+                  {
+                     
+                    ?>				
+              <br>
+              <div class="card">
+                 <br>
+                 
+                 <p class="card-header" >  <?=$elt->getLibelle();?> <input type="hidden" name="id_q" value="<?=$elt->getTypeQuestion()?>" ></p>
+                          
+                
+                 <?php
+                
+                  foreach ($rep3 as $dat)
+                  { 
+                   
+                    if($elt->getId_question() == $dat->getId_question())
+                    {
+                       
+                          
+                          if($rep_send3[$elt->getId_question()] == $dat->getLibelle())
+                          {
+                            
+                                 
+                                ?>	
+                                <div class="card-block">
+                                <label><?=$rep_send3[$elt->getId_question()]?></label><span style="color: black; font-style: oblique; background : green;">  &nbsp;&nbsp;&nbsp;&nbsp;bonne reponse    </span>
+                                    <br>
+                                 </div>
+                                
+                                <?php
+                                
+                          }
+                          else 
+                             {
+                                
+                                   ?>
+                                  <div class="card-block">
+                                  <label><?=$rep_send3[$elt->getId_question()]?></label><span style="color: black; font-style: oblique; background : red;">  &nbsp;&nbsp;mauvaise reponse   </span>
+                                    <br>
+                                 </div>
+                                   
+                                   <?php
+                                    
+                             }
+                    
+                               
+                    }
+                  
+              } 
+              
+            
+           }
+               
+
+                              //var_dump($rep_send2);
+                              foreach ($donnees2 as $elt) 
+                              {
+                                ?>				
+                          <br>
+                          <div class="card">
+                             <br>
+                             
+                             <p class="card-header" >  <?=$elt->getLibelle();?> <input type="hidden" name="id_q" value="<?=$elt->getTypeQuestion()?>" ></p>
+                             <select name="quizcheck2[<?=$elt->getId_question()?>]" id="pet-select">
+                                      
+                            
+                             <?php
+                            
+                              foreach ($rep2 as $dat)
+                              { 
+                               
+                                if($elt->getId_question() == $dat->getId_question())
+                                {
+                                   
+                                      
+                                      if($rep_send2[$j]->getId_reponse() == $dat->getId_reponse())
+                                      {
+                                         if($rep_send2[$j]->getValeur() == 0)
+                                         {
+                                             
+                                            ?>	
+                                            <option  value="<?php echo $dat->getId_reponse(); ?>" style="background : red;" selected><?=$rep_send2[$j]->getLibelle()?><span style="color: black; font-style: oblique; background : red;">  &nbsp;&nbsp;///mauvaise reponse    </span></option>
+                                            
+                                            <?php
+                                            
+                                          }
+                                      else if($rep_send2[$j]->getValeur() == 1)
+                                         {
+                                            
+                                               ?>
+                                              <option  value="<?php echo $dat->getId_reponse(); ?>" style="background : green;" selected><?=$rep_send2[$j]->getLibelle()?><span style="color: black; font-style: oblique; background : green;">  &nbsp;&nbsp;///bonne reponse    </span></option>
+                                               
+                                               <?php
+                                                
+                                         }
+                                     
+        
+                                    }
+                                      else
+                                         {
+                                            ?>
+                                            <option  value="<?php echo $dat->getId_reponse(); ?>" style="color:black;" ><?=$dat->getLibelle()?></option>
+                                            <?php
+                                         } 
+                                
+                                           
+                                }
+                              
+                          } 
+                          ?>
+                          </select>
+                          <?php
+                          if($j < sizeof($rep_send2))
+                             $j++;
+                       }
             }
                         
                      ?>
