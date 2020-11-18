@@ -64,6 +64,28 @@ public  function begin_game()
 	}
 
 	
+	public function game3()
+	{
+
+		if( isset($_SESSION['id_user']))
+		{    
+			 set_donnees1(Questions::recupQuestion(3,1)); // on récupère la liste des questions de notre bdd
+			 set_donnees2(Questions::recupQuestion(3,2)); 
+			 set_donnees2(Questions::recupQuestion(3,3)); 
+			 set_rep1(Reponses::recupReponse(3,1)); // on récupère la liste des questions de notre bdd
+			 set_rep2(Reponses::recupReponse(3,2));
+			 set_rep2(Reponses::recupReponse(3,3)); // on récupère la liste des questions de notre bdd
+			 set_controller_report('page');
+			 set_fonction_back('home');
+
+			 set_route('views/quizz_difficile.php');
+		}
+			else
+					set_route('views/login.php');
+	}
+
+
+	
 	
 
 	public function verif_game3()
@@ -99,6 +121,8 @@ public  function begin_game()
 			set_data(Reponses::recupReponse(3,1)); // on récupère la liste des questions de notre bdd
 			set_donnees1($list);
 			set_donnees2($counter);
+			set_controller_report('page');
+			set_fonction_back('home');
 
 
 			set_route('views/quizz_facile.php');
@@ -162,7 +186,8 @@ public  function begin_game()
 			set_rep_send1($list1);
 			set_rep_send2($list2);
 			set_counter($counter);
-
+			set_controller_report('page');
+			set_fonction_back('home');
 
 			set_route('views/quizz_moyen.php');
 		}
@@ -192,59 +217,15 @@ public  function begin_game()
 
 
 
-  public  function verif_game()
+  public  function account()
   {
-		if(isset($_POST['id_q']))
-		{
-			$counter =0;
-			$donnees = Questions::recupQuestion($_POST['id_q']);
-			$selected = $_POST['quizcheck'];
-			//var_dump($selected);
-	
-			foreach($donnees as $elt)
-			{
-				if($selected[$elt->getId_question()] == 1)
-				{
-					$counter++;
-				}
-			}
-	
-			Parties::inputPart($counter, $_SESSION['id_user'], $_POST['id_q']);
-			set_donnees1(Parties::recupPartie($_SESSION['id_user'],1));
-			set_donnees2(Parties::recupPartie($_SESSION['id_user'],2));
-			set_donnees3(Parties::recupPartie($_SESSION['id_user'],3));
-			set_data(Users::recupUser($_SESSION['id_user']));
-	
-			set_res($counter);
-	
-			switch($_POST['id_q']) {
-				case 1:
-					$dif = "Difficile";  
-					break;
-				case 2:
-					$dif = "Moyen";
-					break;
-				case 3:
-					$dif = "Facile";
-					break;
-				}
-				set_message($dif);
-
-				set_route('views/mon_profil.php');
-		}
-
-		else{
-
+		
 			set_donnees1(Parties::recupPartie($_SESSION['id_user'],1));
 			set_donnees2(Parties::recupPartie($_SESSION['id_user'],2));
 			set_donnees3(Parties::recupPartie($_SESSION['id_user'],3));
 			set_data(Users::recupUser($_SESSION['id_user']));
 	
 			set_route('views/mon_profil.php');
-		}
-		
-
-		
 
   }
             
