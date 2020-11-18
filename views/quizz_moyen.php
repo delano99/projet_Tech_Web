@@ -49,7 +49,7 @@ Latest commit bb3157e 2 days ago
                <br>
                <form action="?controller=partie&action=verif_game2" method="post">
                   <?php
-                  if(!isset($donnees5))
+                  if(!isset($rep_send1) || !isset($rep_send2))
                   {
 
                   
@@ -115,7 +115,9 @@ Latest commit bb3157e 2 days ago
                {
                   
                   $i = 0;
-                  foreach ($donnees as $elt) 
+                  $j=0;
+                  
+                  foreach ($donnees1 as $elt) 
                       {
                      	?>				
                   <br>
@@ -124,16 +126,16 @@ Latest commit bb3157e 2 days ago
                      <p class="card-header" >  <?=$elt->getLibelle();?> <input type="hidden" name="id_q" value="<?=$elt->getTypeQuestion()?>" ></p>
                     
                      <?php
-                      foreach ($data as $dat)
+                      foreach ($rep1 as $dat)
                       { 
                        
                         if($elt->getId_question() == $dat->getId_question())
                         {
                            
                               
-                              if($donnees1[$i]->getId_reponse() == $dat->getId_reponse())
+                              if($rep_send1[$i]->getId_reponse() == $dat->getId_reponse())
                               {
-                                 if($donnees1[$i]->getValeur() == 0)
+                                 if($rep_send1[$i]->getValeur() == 0)
                                  {
                                      
                                     ?>	
@@ -145,7 +147,7 @@ Latest commit bb3157e 2 days ago
                                     <?php
                                     
                                   }
-                              else if($donnees1[$i]->getValeur() == 1)
+                              else if($rep_send1[$i]->getValeur() == 1)
                                  {
                                     
                                        ?>
@@ -177,6 +179,67 @@ Latest commit bb3157e 2 days ago
                   } 
                   $i++;
                }
+
+               foreach ($donnees2 as $elt) 
+                      {
+                     	?>				
+                  <br>
+                  <div class="card">
+                     <br>
+                     
+                     <p class="card-header" >  <?=$elt->getLibelle();?> <input type="hidden" name="id_q" value="<?=$elt->getTypeQuestion()?>" ></p>
+                     <select name="quizcheck2[<?=$elt->getId_question()?>]" id="pet-select">
+                              <option value="">--Please choose an option--</option>
+                    
+                     <?php
+                      foreach ($rep2 as $dat)
+                      { 
+                       
+                        if($elt->getId_question() == $dat->getId_question())
+                        {
+                           
+                              
+                              if($rep_send2[$j]->getId_reponse() == $dat->getId_reponse())
+                              {
+                                 if($rep_send2[$j]->getValeur() == 0)
+                                 {
+                                     
+                                    ?>	
+                                    <option  value="<?php echo $dat->getId_reponse(); ?>" selected><?=$dat->getLibelle()?></option>
+                                    <span style="color: black; font-style: oblique; background : red;">  &nbsp;&nbsp;mauvaise reponse    </span>
+                                    <?php
+                                    
+                                  }
+                              else if($rep_send1[$j]->getValeur() == 1)
+                                 {
+                                    
+                                       ?>
+                                       <option  value="<?php echo $dat->getId_reponse(); ?>" selected><?=$dat->getLibelle()?></option>
+                                       <span style="color: black; font-style: oblique; background : green;">  &nbsp;&nbsp;mauvaise reponse    </span>
+
+                                       <?php
+                                        
+                                 }
+                             
+
+                            }
+                              else
+                                 {
+                                    ?>
+                                    <option  value="<?php echo $dat->getId_reponse(); ?>" selected><?=$dat->getLibelle()?></option>
+                                    <?php
+                                 } 
+                        
+                                   
+                        }
+                      
+                  } 
+                  ?>
+                  </select>
+                  <?php
+                  
+                  $i++;
+               }
             }
                         
                      ?>
@@ -184,7 +247,7 @@ Latest commit bb3157e 2 days ago
 
                   <br>
                   <?php
-                     if(!isset($donnees7))
+                     if(!isset($counter))
                      {
                   ?>
                      <input type="submit" name="submit" Value="Submit" class="btn btn-success m-auto d-block" /> <br>
@@ -197,7 +260,7 @@ Latest commit bb3157e 2 days ago
                                           
                                           <div class="col-md-7 profil-text">
 														<p>
-													<span style="color: black; font-style: oblique;">	Votre score est de:  &nbsp;&nbsp;<?= $donnees2;?>   </span> </br>
+													<span style="color: black; font-style: oblique;">	Votre score est de:  &nbsp;&nbsp;<?= $counter;?>   </span> </br>
 													</p>
 												</div>
 												</div>

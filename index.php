@@ -70,6 +70,22 @@
 		global $rep3;
 		$rep3=$data;                                                                                                                                                                              
 	}
+	function set_counter($data){
+		global $counter;
+		$counter=$data;                                                                                                                                                                              
+	}
+	function set_rep_send1($data){
+		global $rep_send1;
+		$rep_send1=$data;                                                                                                                                                                              
+	}
+	function set_rep_send2($data){
+		global $rep_send2;
+		$rep_send2=$data;                                                                                                                                                                              
+	}
+	function set_rep_send3($data){
+		global $rep_send3;
+		$rep_send3=$data;                                                                                                                                                                              
+	}
 	function set_donnees($data){
 		global $donnees;
 		$donnees=$data;                                                                                                                                                                                 

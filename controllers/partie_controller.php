@@ -110,17 +110,20 @@ public  function begin_game()
 	{
 		if(isset($_POST['id_q']))
 		{
-			$list = [];
+			$list1 = [];
+			$list2 = [];
 			$counter =0;
-			$donnees = Questions::recupQuestion(3,1);
+			$donnees1 = Questions::recupQuestion(2,1);
+			$donnees2 = Questions::recupQuestion(2,2);
 			//var_dump($donnees);
-			$selected = $_POST['quizcheck'];
+			$selected1 = $_POST['quizcheck1'];
+			$selected2 = $_POST['quizcheck2'];
 			//var_dump($selected);
 	
-			foreach($donnees as $elt)
+			foreach($donnees1 as $elt)
 			{
 				//var_dump($selected[$elt->getId_question()]);
-				$list_reponse =  Reponses::recupValeur($selected[$elt->getId_question()]);
+				$list_reponse =  Reponses::recupValeur($selected1[$elt->getId_question()]);
 				//
 				foreach($list_reponse as $reponse)
 				{
@@ -129,19 +132,39 @@ public  function begin_game()
 						$counter++;
 					}
 
-					$list [] = $reponse;
+					$list1 [] = $reponse;
+				}	
+
+			}
+
+			foreach($donnees2 as $elt)
+			{
+				//var_dump($selected[$elt->getId_question()]);
+				$list_reponse =  Reponses::recupValeur($selected2[$elt->getId_question()]);
+				//
+				foreach($list_reponse as $reponse)
+				{
+					if($reponse->getValeur() == 1)
+					{
+						$counter++;
+					}
+
+					$list2 [] = $reponse;
 				}	
 
 			}
 			//var_dump($list);
-			Parties::inputPart($counter, $_SESSION['id_user'], 3);
-			set_donnees(Questions::recupQuestion(3,1)); // on récupère la liste des questions de notre bdd
-			set_data(Reponses::recupReponse(3)); // on récupère la liste des questions de notre bdd
-			set_donnees1($list);
-			set_donnees2($counter);
+			Parties::inputPart($counter, $_SESSION['id_user'], 2);
+			set_donnees1(Questions::recupQuestion(2,1)); // on récupère la liste des questions de notre bdd
+			set_donnees2(Questions::recupQuestion(2,2)); 
+			set_rep1(Reponses::recupReponse(2,1)); // on récupère la liste des questions de notre bdd
+		  set_rep2(Reponses::recupReponse(2,2)); // on récupère la liste des questions de notre bdd
+			set_rep_send1($list1);
+			set_rep_send2($list2);
+			set_counter($counter);
 
 
-			set_route('views/quizz_facile.php');
+			set_route('views/quizz_moyen.php');
 		}
 	}
 
