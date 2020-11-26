@@ -1,33 +1,4 @@
-Skip to content
-Search or jump to…
 
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@delano99 
-delano99
-/
-projet_Tech_Web
-1
-00
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-projet_Tech_Web/views/quizz.php /
-@delano99
-delano99 creeation quizz
-Latest commit bb3157e 2 days ago
- History
- 1 contributor
-62 lines (55 sloc)  2.72 KB
   
 <div>
        <!--   <h1 class="text-center text-white font-weight-bold text-uppercase bg-dark" >  Complete Quiz Website using PHP and MYSQL using Session</h1><br>
@@ -275,15 +246,4 @@ Latest commit bb3157e 2 days ago
       </div>
       </div>
       </div>
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+

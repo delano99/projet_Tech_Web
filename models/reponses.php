@@ -104,6 +104,24 @@ require_once('connexion.php');
       return $list ;
       
     }
+
+    public static function addReponse($id_q, $libelle, $valeur)
+    {
+      $Db = new config();
+      $db = $Db::getInstance();
+
+        $addQuestion = $db->prepare('INSERT INTO reponses (libelle, valeur, id_question) VALUES (?,?,?)');
+				$addQuestion->execute(array($libelle, $valeur, $id_q));
+    }
+
+    public static function deletRep($id_q)
+    {
+      $Db = new config();
+      $db = $Db::getInstance();
+
+        $addQuestion = $db->prepare('DELETE FROM reponses WHERE id_question = ?');
+				$addQuestion->execute(array($id_q));
+    }
 }
 
 

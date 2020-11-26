@@ -12,9 +12,9 @@
       case 'partie':
         $controller = new PartiesController();
         break;
-      /*case 'admin':
-        $controller = new TuteursController();
-        // break;*/
+      case 'admin':
+        $controller = new AdminsController();
+        break;
     }
     $controller->{ $action }();
   }
@@ -23,7 +23,8 @@
   $controllers = array(
                        'users' => ['login','inscription','connexion','deconnexion','resetPassword','forgotPassword','update_account','modify_account','profil','create_account','redirection'],
                        'page'=>['home','about'],
-                       'partie' => ['game1','game2','game3','verif_game1','verif_game2', 'account','verif_game3'] 
+                       'partie' => ['game1','game2','game3','verif_game1','verif_game2', 'account','verif_game3'],
+                       'admin' => ['player','interface','vAddQuestion','AddQuestion','modify_question','myQuestion'] 
                        );
   if (array_key_exists($controller, $controllers))
   {

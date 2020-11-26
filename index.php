@@ -29,14 +29,28 @@
 	
 	else
 	{
+		if($_SESSION['type_user'] == 2)
+		{
 				$nav = '
 				<li class="nav-item" role="presentation"><a class="nav-link" href="?controller=users&action=redirection">Jouer</a></li>
-		<li class="nav-item"><a class="nav-link" href="?controller=partie&action=account">Mon profil </a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="?controller=users&action=deconnexion">Deconnexion </a>
-		</li>
-        ';
-    }
+				<li class="nav-item"><a class="nav-link" href="?controller=partie&action=account">Mon profil </a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="?controller=users&action=deconnexion">Deconnexion </a>
+				</li>
+						';
+		}
+
+		else if($_SESSION['type_user'] == 1)
+		{
+				$nav = '
+				<li class="nav-item" role="presentation"><a class="nav-link" href="?controller=admin&action=interface">Gestion Question</a></li>
+				<li class="nav-item"><a class="nav-link" href="?controller=admin&action=player">Mes meilleur Joueurs </a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="?controller=users&action=deconnexion">Deconnexion </a>
+				</li>
+						';
+		}
+	}
     $navigation = new arbre();
     $tab = $navigation::nave($controller, $action);
 	$route = '';

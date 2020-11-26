@@ -42,10 +42,10 @@
 			//On regarde si le mail n'est pas déjà utilisé pour un compte valide!
 			if ($request->rowCount() == 0 /*aucun compte avec ce login*/) 
 			{  
-		
+				$id_type_user = 2;
 				// puis son nom et prénom dans la table user
-				$addCompte = $bd->prepare('INSERT INTO users (nom, prenom, email, password) VALUES (?,?,?,?)');
-				$addCompte->execute(array($nom, $prenom, $login_mail,password_hash($pwd,PASSWORD_DEFAULT)));   // rajouter une exception à ce niveau
+				$addCompte = $bd->prepare('INSERT INTO users (nom, prenom, email, id_type_user, password) VALUES (?,?,?,?,?)');
+				$addCompte->execute(array($nom, $prenom, $login_mail,$id_type_user,password_hash($pwd,PASSWORD_DEFAULT)));   // rajouter une exception à ce niveau
 				header('location:index.php?controller=users&action=login');									
 			}
 					

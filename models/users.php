@@ -87,7 +87,7 @@ require_once('connexion.php');
          $_SESSION['id_user']= $id;
          
          //on recupere l'ID du statut de l'user
-         $request=$db->query('SELECT us.nom as nom,us.prenom as prenom,us.email as mail from users as us WHERE  id_user = '.$_SESSION['id_user'].'');
+         $request=$db->query('SELECT us.nom as nom,us.prenom as prenom,us.email as mail, us.id_type_user as id_type_user from users as us WHERE  id_user = '.$_SESSION['id_user'].'');
          $res = $request->fetch();
          
          
@@ -95,6 +95,7 @@ require_once('connexion.php');
          $_SESSION['email']=$res['mail'];
          $_SESSION['nom']=$res['nom'];
          $_SESSION['prenom']=$res['prenom'];
+         $_SESSION['type_user']=$res['id_type_user'];
          //exit('authentification success');
     } 
     else
@@ -132,6 +133,29 @@ require_once('connexion.php');
       }
       //var_dump($list);
       return $user ;
+    }
+
+    public static function recupUserScore()
+    {
+      $list=[];
+      $Db = new config();
+      $db = $Db::getInstance();
+
+      $req=$db->query('SELECT u.nom, u.id_user, u.prenom ,COUNT(p.score) AS score FROM parties p INNER JOIN users u ON u.id_user = p.id_user GROUP BY u.id_user ORDER BY score DESC');
+
+      foreach ($req->fetchAll() as $data)
+      {
+      
+        $user = new Users();
+        $user->setId_user($data['id_user']);
+        $user->setNom($data['nom']);
+        $user->setPrenom($data['prenom']);
+        
+        $list []= array('user'=>$user,'score'=>$data['score']);
+      }
+
+      //var_dump($list);
+      return $list ;
     }
 
 }
