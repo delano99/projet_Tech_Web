@@ -148,6 +148,41 @@ require_once('connexion.php');
         $addQuestion = $db->prepare('DELETE FROM questions WHERE id_question = ?');
 				$addQuestion->execute(array($id_q));
     }
+
+    public static function recupQuest($id_Question)
+    {
+      $list=[];
+      $Db = new config();
+      $db = $Db::getInstance();
+      
+      $req=$db->prepare('SELECT id_question, libelle, id_TypeQuestion, tquestion FROM questions WHERE id_question = ? ');
+      $req->execute(array($id_Question));
+
+      
+      
+      foreach ($req->fetchAll() as $data)
+      {
+        $question= new Questions();
+        $question->setId_question($data['id_question']);
+        $question->setLibelle($data['libelle']);
+        $question->setTypeQuestion($data['id_TypeQuestion']);
+        $question->setTQuestion($data['tquestion']);
+
+        
+      }
+      //var_dump($list);
+      return $question ;
+    }
+
+    
+    public static function updateQuest($id_q, $libelle, $dif)
+    {
+      $Db = new config();
+      $db = $Db::getInstance();
+
+      $req= $db->prepare(" UPDATE questions as q  SET q.libelle= ?, q.id_TypeQuestion = ? WHERE q.id_question = ?"); 
+      $req->execute(array($libelle,$dif,$id_q));
+    }
     
 
 }

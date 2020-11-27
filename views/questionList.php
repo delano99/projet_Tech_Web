@@ -48,7 +48,7 @@
                                                                   
                                                                   
                                                                   
-                                                                  <td><button class="btn" type="submit" name="modifier" >modifier</button>
+                                                                  <td><button class="btn" type="submit" name="consulter" >modifier</button>
                                                                   </td>
                                                                   <td><button class="btn" type="submit" name="supprimer" >Supprimer</button>
                                                                   </td>

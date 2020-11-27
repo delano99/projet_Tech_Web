@@ -77,6 +77,59 @@ class AdminsController
 			Reponses::deletRep($id_q);
 			AdminsController::myQuestion();
 		}
+
+		else if(isset($_POST['consulter']))
+		{
+			$id_q = htmlspecialchars($_POST['id_q']);
+			//$donnees1 = Reponses::recupRep($id_q);
+			set_donnees1(Reponses::recupRep($id_q));
+			//var_dump($donnees1);
+			set_data(Questions::recupQuest($id_q));
+			set_route('views/modifQuest.php');
+		}
+
+		else if(isset($_POST['modifier']))
+		{
+			$lib_ques = htmlspecialchars($_POST['lib_ques']);
+			$id_q = htmlspecialchars($_POST['id_q']);
+			$lib_b_rep = htmlspecialchars($_POST['lib_b_rep']);
+			$id_br = htmlspecialchars($_POST['id_br']);
+			$niv_difficulter = htmlspecialchars($_POST['niv_difficulter']);
+
+			$tab = $_POST['lib_mr'];
+			$tab2 = $_POST['id_mr'];
+
+			$reponses = Reponses::recupRep($id_q);
+
+			foreach ( $reponses as $elt )
+			{
+				if($elt->getValeur() == 0)
+				{
+					$lib_m_rep [] = $tab[$elt->getId_reponse()];
+					$id_m_rep [] = $tab2[$elt->getId_reponse()];
+				}
+			}
+
+			$lib_m1_rep = $lib_m_rep[0];
+			$id_m1_rep = $id_m_rep[0];
+			$lib_m2_rep = $lib_m_rep[1];
+			$id_m2_rep = $id_m_rep[1];
+
+			var_dump($lib_m1_rep);
+			var_dump($id_m1_rep);
+			var_dump($lib_m2_rep);
+			var_dump($id_m2_rep);
+
+			Reponses::updateRep($id_m1_rep, $lib_m1_rep);
+			Reponses::updateRep($id_m2_rep, $lib_m2_rep);
+			Reponses::updateRep($id_br, $lib_b_rep);
+
+			Questions::updateQuest($id_q, $lib_ques, $niv_difficulter);
+			
+
+			AdminsController::myQuestion();
+		}
+
 	}
 
 	public static function myQuestion()
@@ -85,10 +138,6 @@ class AdminsController
 		set_route('views/questionList.php');
 	}
 
-	public function consultQuestion()
-	{
-
-	}
-
+	
 }
 ?>	

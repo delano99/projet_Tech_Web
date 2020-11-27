@@ -13,6 +13,7 @@
 
                   foreach($donnees1 as $elt)
                   {
+                    $i=0;
                     if($elt->getValeur() == 1)
                     {
                     ?>
@@ -27,14 +28,15 @@
                 else{
 
                   ?>
-                  <div class="form-row form-group">
-                    <div class="col-sm-4 label-column"><label class="col-form-label" for="email-input-field">libelle de la  mauvaise reponse </label></div>
-                    <div class="col-sm-6 input-column"><input class="form-control complete" type="text" name="lib_m1_rep" id="numero1" value ="<?=$elt->getLibelle()?>"><input type="hidden" name="id_mr1" value="<?=$elt->getId_reponse()?>" ></div>
+                  <div class="form-row form-group" id="Yes" name="text1">
+                      <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">libelle de la bonne reponse </label></div>
+                      <div class="col-sm-6 input-column"><input class="form-control complete" type="text" name="lib_mr[<?=$elt->getId_reponse()?>]" id="b" value ="<?=$elt->getLibelle()?>"><input type="hidden" name="id_mr[<?=$elt->getId_reponse()?>]" value="<?=$elt->getId_reponse()?>" ></div>
                   </div>
 
                   <?php
+                  
                 }
-
+                $i++;
                   }
                 ?>
                 <div class="form-row form-group">
