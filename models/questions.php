@@ -90,7 +90,7 @@ require_once('connexion.php');
       $Db = new config();
       $db = $Db::getInstance();
       
-      $req=$db->query('SELECT id_question, libelle, id_TypeQuestion, tquestion FROM questions ');
+      $req=$db->query('SELECT id_question, libelle, id_TypeQuestion, tquestion FROM questions order by id_question');
       
       
       foreach ($req->fetchAll() as $data)

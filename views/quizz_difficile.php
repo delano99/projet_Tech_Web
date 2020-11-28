@@ -100,14 +100,14 @@
 
                            <p class="card-header" >  <?=$elt->getLibelle();?> <input type="hidden" name="id_q" value="<?=$elt->getTypeQuestion()?>" ></p>
                            <select name="quizcheck2[<?=$elt->getId_question()?>]" id="pet-select">
-                              <option value="">--Please choose an option--</option>
+                              
                            <?php
                            foreach ($rep2 as $dat) 
                            {
                               if($elt->getId_question() == $dat->getId_question())
                               { 
                               ?>
-                              <option value="<?php echo $dat->getId_reponse(); ?>"><?=$dat->getLibelle()?></option>
+                              <option selected value="<?php echo $dat->getId_reponse(); ?>"><?=$dat->getLibelle()?></option>
                               
                            <?php
                               

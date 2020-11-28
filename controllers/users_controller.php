@@ -40,7 +40,14 @@ public function inscription()
   
   public function redirection()
   {
-    set_route('views/type_question.php');
+		if($_SESSION['type_user'] == 2)
+		{
+			set_route('views/about.php');
+		}
+			
+			
+		else if($_SESSION['type_user'] == 1)
+			set_route('views/type_question.php');
 	}
 	
 

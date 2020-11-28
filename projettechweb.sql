@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 17 nov. 2020 à 22:53
+-- Généré le : sam. 28 nov. 2020 à 20:21
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `parties` (
   PRIMARY KEY (`id_partie`),
   KEY `fk_client_numero` (`id_user`),
   KEY `fk_part_typeQuest` (`id_typeQuestion`)
-) ENGINE=MyISAM AUTO_INCREMENT=118 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=198 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `parties`
@@ -159,7 +159,87 @@ INSERT INTO `parties` (`id_partie`, `score`, `id_user`, `id_typeQuestion`) VALUE
 (114, 2, 3, 3),
 (115, 2, 3, 3),
 (116, 2, 3, 3),
-(117, 2, 3, 3);
+(117, 2, 3, 3),
+(118, 2, 3, 3),
+(119, 5, 3, 3),
+(120, 3, 3, 3),
+(121, 3, 3, 3),
+(122, 3, 3, 3),
+(123, 2, 3, 3),
+(124, 3, 3, 2),
+(125, 3, 3, 2),
+(126, 3, 3, 2),
+(127, 3, 3, 2),
+(128, 3, 3, 2),
+(129, 3, 3, 2),
+(130, 3, 3, 2),
+(131, 3, 3, 2),
+(132, 3, 3, 2),
+(133, 2, 3, 1),
+(134, 2, 3, 1),
+(135, 5, 3, 1),
+(136, 5, 3, 1),
+(137, 5, 3, 1),
+(138, 4, 3, 1),
+(139, 4, 3, 1),
+(140, 4, 3, 1),
+(141, 5, 3, 1),
+(142, 5, 3, 1),
+(143, 5, 3, 1),
+(144, 5, 3, 1),
+(145, 4, 3, 1),
+(146, 2, 3, 2),
+(147, 1, 3, 2),
+(148, 1, 3, 2),
+(149, 1, 3, 2),
+(150, 1, 3, 2),
+(151, 1, 3, 2),
+(152, 1, 3, 2),
+(153, 1, 3, 2),
+(154, 1, 3, 2),
+(155, 1, 3, 2),
+(156, 1, 3, 2),
+(157, 1, 3, 2),
+(158, 1, 3, 2),
+(159, 1, 3, 2),
+(160, 1, 3, 2),
+(161, 1, 3, 2),
+(162, 1, 3, 2),
+(163, 1, 3, 2),
+(164, 1, 3, 2),
+(165, 1, 3, 2),
+(166, 1, 3, 2),
+(167, 4, 3, 1),
+(168, 1, 3, 2),
+(169, 1, 3, 2),
+(170, 1, 3, 2),
+(171, 3, 3, 2),
+(172, 1, 3, 2),
+(173, 4, 3, 1),
+(174, 4, 3, 1),
+(175, 4, 3, 1),
+(176, 4, 3, 1),
+(177, 4, 3, 1),
+(178, 4, 3, 1),
+(179, 4, 3, 1),
+(180, 4, 3, 1),
+(181, 4, 3, 1),
+(182, 4, 3, 1),
+(183, 4, 3, 1),
+(184, 4, 3, 1),
+(185, 1, 3, 1),
+(186, 1, 3, 1),
+(187, 2, 11, 3),
+(188, 3, 11, 2),
+(189, 5, 11, 1),
+(190, 5, 11, 1),
+(191, 5, 11, 1),
+(192, 3, 13, 3),
+(193, 1, 13, 2),
+(194, 1, 13, 2),
+(195, 2, 13, 2),
+(196, 2, 13, 2),
+(197, 3, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -175,21 +255,19 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `tquestion` int(11) NOT NULL,
   PRIMARY KEY (`id_question`),
   KEY `fk_question` (`id_TypeQuestion`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `questions`
 --
 
 INSERT INTO `questions` (`id_question`, `libelle`, `id_TypeQuestion`, `tquestion`) VALUES
-(1, 'LE PERE DE NARUTO', 3, 1),
 (2, 'LA MERE DE NARUTO', 3, 1),
 (3, 'LE NOM COMPLET DE NARUTO', 3, 1),
 (4, 'LE NOM DU PERE DE GON', 3, 1),
 (5, 'LE MEILLEUR AMIE DE KILUA DANS HUNTER HUNTER', 3, 1),
 (6, 'COMBIEN DE TYPES DE HATSU EXISTE T ILS DANS HUNTER HUNTER', 2, 1),
 (7, 'Qui tua le Grand Pope pour prendre sa place', 2, 1),
-(8, 'Combien de Chevaliers d\'Or les Chevaliers de Bronze affrontent-ils ', 2, 2),
 (9, 'Pour Seiya, qui est Marine', 2, 2),
 (10, 'En qui le dieu Poséidon se réincarne-t-il', 2, 2),
 (11, 'Où le dieu Hadès cache-t-il son corps depuis les temps mythologiques', 1, 1),
@@ -198,8 +276,7 @@ INSERT INTO `questions` (`id_question`, `libelle`, `id_TypeQuestion`, `tquestion
 (14, 'Lin Yao est à la recherche du secret de la vie éternelle. C\'est un des fils de l\'Empereur de Xing. Lequel ', 1, 2),
 (15, 'Fu est l\'un des serviteurs de Lin Yao, ainsi que le grand-père de Ranfan. Qui escorte-t-il jusqu\'à Xing', 1, 2),
 (16, 'Qui est le roi des dieux', 1, 3),
-(17, 'Qui est la deesse de la guerre?', 1, 3),
-(18, 'avec qui le deesse de guerre effectue une guerre sainte tout les 200 ans?\r\n', 1, 3);
+(17, 'Qui est la deesse de la guerre?', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -215,18 +292,15 @@ CREATE TABLE IF NOT EXISTS `reponses` (
   `id_question` int(11) NOT NULL,
   PRIMARY KEY (`id_reponse`),
   KEY `fk_reponse` (`id_question`)
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `reponses`
 --
 
 INSERT INTO `reponses` (`id_reponse`, `libelle`, `valeur`, `id_question`) VALUES
-(1, 'MINATO', 1, 1),
-(2, 'MINAKO', 0, 1),
-(3, 'JIRAYA', 0, 1),
-(4, 'KUSHINAE', 0, 2),
-(5, 'KUSHINU', 0, 2),
+(4, 'KU', 0, 2),
+(5, 'KUSHI', 0, 2),
 (6, 'KUSHINA', 1, 2),
 (7, 'NARUTO NAMIKAZE', 0, 3),
 (8, 'NARUTO UZUMAKI', 1, 3),
@@ -235,7 +309,6 @@ INSERT INTO `reponses` (`id_reponse`, `libelle`, `valeur`, `id_question`) VALUES
 (11, 'JIN', 0, 4),
 (12, 'GING', 1, 4),
 (13, 'GON', 1, 5),
-(14, 'GUN', 0, 5),
 (15, 'GUUN', 0, 5),
 (16, '7', 0, 6),
 (17, '6', 1, 6),
@@ -243,9 +316,6 @@ INSERT INTO `reponses` (`id_reponse`, `libelle`, `valeur`, `id_question`) VALUES
 (19, 'Saga', 1, 7),
 (20, 'Mû', 0, 7),
 (21, 'Aldébaran', 0, 7),
-(22, '11', 0, 8),
-(23, '10', 1, 8),
-(24, '9', 0, 8),
 (25, 'Sa mère', 0, 9),
 (26, 'Sa Soeur', 0, 9),
 (27, 'Son maître', 1, 9),
@@ -268,8 +338,7 @@ INSERT INTO `reponses` (`id_reponse`, `libelle`, `valeur`, `id_question`) VALUES
 (44, 'Le sous-lieutenant Ross', 1, 15),
 (45, 'Le sous-lieutenant Falman', 0, 15),
 (46, 'zeus', 1, 16),
-(47, 'athena', 1, 17),
-(48, 'adaes', 1, 18);
+(47, 'athena', 1, 17);
 
 -- --------------------------------------------------------
 
@@ -296,6 +365,27 @@ INSERT INTO `type_question` (`id_typeQuestion`, `libelle`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `type_user`
+--
+
+DROP TABLE IF EXISTS `type_user`;
+CREATE TABLE IF NOT EXISTS `type_user` (
+  `id_type_user` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_type_user`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `type_user`
+--
+
+INSERT INTO `type_user` (`id_type_user`, `libelle`) VALUES
+(1, 'admin'),
+(2, 'users');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `users`
 --
 
@@ -306,24 +396,29 @@ CREATE TABLE IF NOT EXISTS `users` (
   `prenom` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_user`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+  `id_type_user` int(11) NOT NULL,
+  PRIMARY KEY (`id_user`),
+  KEY `fk_cliente` (`id_type_user`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id_user`, `nom`, `prenom`, `email`, `password`) VALUES
-(1, 'aa', 'aa', 'a@gmail.com', 'e0c9035898dd52fc65c41454cec9c4d2611bfb37'),
-(2, 'aa', 'aa', 'a@gmail.com', 'e0c9035898dd52fc65c41454cec9c4d2611bfb37'),
-(3, 'KOYOUO NYOTUE', 'Veirel Delano', 'veirel_delano.koyouo_nyotue@isen.yncrea.fr', '$2y$10$hXzLSzSw7diMGnsxj2k2V.NF2ljvMYMy4qJ6CFooamEvt0Cz25qRW'),
-(4, 'KOYOUO NYOTUE', 'Veirel Delano', 'veirel@isen.yncrea.fr', '$2y$10$3URMNEld4Vaz6t05lYtHcOlXhbjPZv1qfXFvdCwJzdUnZiI7mAHca'),
-(5, 'v', 'e', 'c@isen.yncrea.fr', '$2y$10$PxhpJty9RnycZ5oEf3LEtOOFykgkGHujErzy0W4RiVTJcc4oMyCuK'),
-(6, 'KOYOUO NYOTUE', 'Veirel Delano', 'veir@isen.yncrea.fr', '$2y$10$AmYg2GUbgzJx319LpPrZ2O9z3BdknZn4R.jofzYRT5VBRsLSDYSWi'),
-(7, 'KOYOUO NYOTUE', 'aa', 'v@isen.yncrea.fr', '$2y$10$nNKrKTHBfb/.kVEI/HNMAOQQ3KLzH9jZz7pNt6RRjKE.2m.Ce0wfu'),
-(8, 'KOYOUO NYOTUE', 'Veirel Delano', 've@isen.yncrea.fr', '$2y$10$3Joyh/lNzIuhpXeRcYwBUu135dp3L4/7gFtC26DEOlVE4qAPIEd0C'),
-(9, 'KOYOUO NYOTUE', 'Veirel Delano', 'nyotue@isen.yncrea.fr', '$2y$10$6QDVisBJ1xjH5vWrl.lHMeD5Q4f75bOJJ1wHl24bPNZWbyoU7NjZW'),
-(10, 'KOYOUO NYOTUE', 'd', 'l@isen.yncrea.fr', '$2y$10$JODPiD5CaXu.okwwU55uUeOawkh7PjBFPP/tXM.kVkAum7QfOyQEa');
+INSERT INTO `users` (`id_user`, `nom`, `prenom`, `email`, `password`, `id_type_user`) VALUES
+(1, 'aa', 'aa', 'a@gmail.com', 'e0c9035898dd52fc65c41454cec9c4d2611bfb37', 2),
+(2, 'aa', 'aa', 'a@gmail.com', 'e0c9035898dd52fc65c41454cec9c4d2611bfb37', 2),
+(3, 'KOYOUO NYOTUE', 'Veirel Delano', 'veirel_delano.koyouo_nyotue@isen.yncrea.fr', '$2y$10$hXzLSzSw7diMGnsxj2k2V.NF2ljvMYMy4qJ6CFooamEvt0Cz25qRW', 1),
+(4, 'KOYOUO NYOTUE', 'Veirel Delano', 'veirel@isen.yncrea.fr', '$2y$10$3URMNEld4Vaz6t05lYtHcOlXhbjPZv1qfXFvdCwJzdUnZiI7mAHca', 2),
+(5, 'v', 'e', 'c@isen.yncrea.fr', '$2y$10$PxhpJty9RnycZ5oEf3LEtOOFykgkGHujErzy0W4RiVTJcc4oMyCuK', 2),
+(6, 'KOYOUO NYOTUE', 'Veirel Delano', 'veir@isen.yncrea.fr', '$2y$10$AmYg2GUbgzJx319LpPrZ2O9z3BdknZn4R.jofzYRT5VBRsLSDYSWi', 2),
+(7, 'KOYOUO NYOTUE', 'aa', 'v@isen.yncrea.fr', '$2y$10$nNKrKTHBfb/.kVEI/HNMAOQQ3KLzH9jZz7pNt6RRjKE.2m.Ce0wfu', 2),
+(8, 'KOYOUO NYOTUE', 'Veirel Delano', 've@isen.yncrea.fr', '$2y$10$3Joyh/lNzIuhpXeRcYwBUu135dp3L4/7gFtC26DEOlVE4qAPIEd0C', 2),
+(9, 'KOYOUO NYOTUE', 'Veirel Delano', 'nyotue@isen.yncrea.fr', '$2y$10$6QDVisBJ1xjH5vWrl.lHMeD5Q4f75bOJJ1wHl24bPNZWbyoU7NjZW', 2),
+(10, 'KOYOUO NYOTUE', 'd', 'l@isen.yncrea.fr', '$2y$10$JODPiD5CaXu.okwwU55uUeOawkh7PjBFPP/tXM.kVkAum7QfOyQEa', 2),
+(11, 'KOYOUO NYOTUE', 'Veirel Delano', 'aq@isen.yncrea.fr', '$2y$10$fECFZSDXjB7I0oUdcPlQnuiybU9yTKcpZ/3qkA7tsd8./ZxUhN1Xi', 1),
+(12, 'nyotue', 'veirel delano', 'tue@isen.yncrea.fr', '$2y$10$ALuBZOtUwhs6pIZ9SE8uNuxPNxEGgrdUAWtAM9OGTDBOSaZSad32C', 2),
+(13, 'a', 's', 'ue@isen.yncrea.fr', '$2y$10$oREyjuvhMNGq7BI1PNx7X.khGQwrjsSjfCq0t7m8i4CLF8y/IMIlq', 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
